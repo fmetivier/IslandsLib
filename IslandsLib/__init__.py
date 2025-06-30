@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+IslandLib
+"""
+
+__author__ = "François Métivier"
+__copyright__ = "Copyright 2025"
+__license__ = "GPL"
+__version__ = "1.0"
+
+__all__ = [
+    "IslandLib",
+    "Classes",
+    "IGN",
+    "FEM",
+    "Misc"
+]
+
+#############################
+#
+# Librairies
+#
+#############################
+import sys 
+sys.path.append("..")
+
+import sys
+
+
+# Add path to pyFreeFem
+machine='home'
+if machine=='lab':
+    sys.path.append('/home/francois/Nextcloud/src/pyFreeFem-master/')
+else:
+    sys.path.append('/home/metivier/Nextcloud/src/pyFreeFem-master/')
+
+import pyFreeFem as pyff
+
+import numpy as np
+import time
+import geopandas
+import pandas
+
+from osgeo import gdal
+from osgeo import ogr
+import cartopy.crs as ccrs
+import cartopy.io.shapereader as shapereader
+
+import glob
+import shapely as shp
+
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.patches import Rectangle
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from mpl_toolkits.mplot3d import Axes3D
+
+import triangle as tr
+
+from scipy.interpolate import griddata
+from scipy.interpolate import RegularGridInterpolator
+from scipy.sparse.linalg import spsolve
+
+from copy import deepcopy
+
+from IslandsLib.Classes import *
+from IslandsLib.IGN import *
+from IslandsLib.FEM import *  
+from IslandsLib.Misc import *  
+
+
+
+
+def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33", fi = 1e-4, sub_sampling = 10, clockwise=True, lakes = None, plot = True):
+    """Poisson Resolution for an Island (closed contour with null potential)
+
+    Parameters
+    ----------
+        islands: str, optional
+            Island name. Defaults to 'Desirade'.
+        fname: str, optional 
+            Coastline contour data file. Defaults to "../../data/Desirade.txt".
+        ttype: str, optional 
+            Triangle triangulation parameters. Defaults to "pq33a1000".
+        fi: float, optional
+            value of the poisson coefficient
+        sub_sampling: int, optional
+            sampling of the contour (1 = all points are preserved, 10 = one point every 10 points is conserved)
+        lakes: boolean, None
+            to be used as a dic when lake contours are to be included
+        plot: boolean, True
+            if True plots the figures
+
+    Returns
+    -------
+        array: :math:`u = \phi^2` solution of poisson equation 
+        Th object: Th domain of the solution 
+        2D array: X positions on a grid
+        2D array: Y positions on a grid
+        2D array: Zm = masked water table height on a (X,Y) grid
+    """
+
+    f = open(fname,"r")
+
+    lines = f.readlines()
+    x, y = [], []
+    for line in lines:
+        if line[0] != "#": # skip header
+            l = line.strip('\n').split(',')
+            x.append( float(l[0]) )
+            y.append( float(l[1]) )
+
+
+    if not clockwise:
+        x = np.array(x[::-1])
+        y = np.array(y[::-1])
+
+    x = x[::sub_sampling]
+    y = y[::sub_sampling]
+
+    if plot:
+        fig,ax = plt.subplots(1)
+        ax.plot(x,y)
+        for i in range(len(y)//100):
+            ax.text(x[100*i],y[100*i],i*100)
+
+    b = [river(islands, x, y)]
+
+    borders, vertices, segments = prepare_boundaries(
+        b, [], for_FF=True)
+
+    ##############################################################
+    #
+    # performs triangulation
+    # 1) with triangle
+    # 2) with Freefem
+    #
+    ##############################################################
+
+    # ttype = 'p'
+    xv, yv, mesh, borders = create_triangle_mesh(
+        borders = borders, vertices = vertices, segments = segments, plot = plot, ttype = ttype )
+
+
+    print("Creating FreeFem mesh...")
+    Th, Th_boundaries = create_FreeFem_mesh(
+        xv, yv, mesh, adapt = False, borders = borders, plot = plot)
+
+    # sur une ile le contour est à 0
+    bcs = {}
+    for T in Th_boundaries:
+        bcs[T.rname] = 0 * T.x
+
+    for key, val in bcs.items():
+        print(key, val)
+
+    u, Th = solve_fem( Th = Th, bcs = bcs, fi = fi) 
+
+    #####################################
+    # Plot the potential and streamlines
+    #####################################
+    
+    fig, ax = plt.subplots(1)
+    fig, ax, X, Y, Z, dx, dy, itp = grid_plot_u(fig, ax, Th, u)
+    p = add_mask(ax, x, y, outer=True, extent=[min(x),max(x),min(y),max(y)])
+
+        # plt.savefig("PhiPlot.svg", bbox_inches='tight')
+    plt.savefig("%s.pdf" % (islands), bbox_inches='tight')
+
+    plt.close()
+    
+    Zm = mask_data(X,Y,Z,p)
+    
+    return u, Th, X, Y, Zm, dx, dy
+
+if __name__ == '__main__':
+
+    IslandLens()
+    plt.show()
