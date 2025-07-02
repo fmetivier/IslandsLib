@@ -907,7 +907,7 @@ def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit
     # création de la grille régulières
     X, Y = np.meshgrid(x, y)
     Z = griddata((Th.x, Th.y), u, (X, Y), fill_value = fval)
-
+    Z = np.nan_to_num(Z)
 
     if dupuit:
         Z = np.sqrt(Z) 

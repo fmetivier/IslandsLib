@@ -165,6 +165,8 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
     fig, ax, X, Y, Z, dx, dy, itp = grid_plot_u(fig, ax, Th, u)
     p = add_mask(ax, x, y, outer=True, extent=[min(x),max(x),min(y),max(y)])
 
+
+
         # plt.savefig("PhiPlot.svg", bbox_inches='tight')
     plt.savefig("%s.pdf" % (islands), bbox_inches='tight')
 
