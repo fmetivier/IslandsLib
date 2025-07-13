@@ -99,6 +99,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
         2D array: X positions on a grid
         2D array: Y positions on a grid
         2D array: Zm = masked water table height on a (X,Y) grid
+        object: itp regular grid interpolator for Z
     """
 
     f = open(fname,"r")
@@ -174,7 +175,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
     
     Zm = mask_data(X,Y,Z,p)
     
-    return u, Th, X, Y, Zm, dx, dy
+    return u, Th, X, Y, Zm, dx, dy, itp
 
 if __name__ == '__main__':
 
