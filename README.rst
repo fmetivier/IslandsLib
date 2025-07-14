@@ -2,8 +2,6 @@
 IslandsLib: 2D modeling of small island water tables
 ====================================================
 
-Introduction
-============
 
 IslandsLib is a library that provides  a set of functions and classes to help 
 
