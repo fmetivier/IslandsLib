@@ -8,9 +8,12 @@ Welcome to IslandsLib's documentation !
    :caption: Contents:
    
    Introduction
-   Tutorial
+   Install  
+   Samples
+   ContoursIGN
    Directory
    Lib
+   Contributors
    
 
 

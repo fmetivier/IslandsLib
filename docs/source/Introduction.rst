@@ -1,9 +1,36 @@
-################
-About IslandsLib
-################
+######################################
+About IslandsLib and Freshwater Lenses
+######################################
+
+What Islandslib is
+==================
+
+IslandsLib is a python library that provides a set of functions and classes to help 
+
+* solve the poisson equation to model  freshwater lenses of islands using the pyfreefem library and FreeFem++ software; 
+* extract data from IGN (French National Geography Insitute) products.
 
 
-Modeling an island's freshwater lens 
+IslandsLib provides a simple function `IslandLens()` to model freshwater lenses *without* a prior knowledge of Finite Element Modeling. 
+Given a set of data and constraints if will model the freshwater lens of a *small* island. 
+A *small* island is here defined as an island without a river network. 
+
+Lakes can be included (see examples), and river networks will be included in  later versions of `IslendLens`. If you want to solve problems with river networks 
+you need to use the set of functions provided or to use pyFreeFem directly.
+
+functions used for IGN producs help to create single coastline contours from shapefile for the purpose of modeling the Poisson equation. 
+They can also be used to extract elevations from DEMS for different purposes. 
+
+Eventually IslandsLib also provides a repository of Island contours. Please feel free to contribute !
+
+
+What are Freshwater Lenses and Why Bother for Them
+==================================================
+
+Carla's Intro
+
+
+Modeling an Island's Freshwater Lens 
 ====================================
 
 Under certain conditions, the water table of an island can be modeled using the following form of the *Poisson* equation,
@@ -28,26 +55,9 @@ Under theses assumptions the depth of the Freshwater-saltwater interface :math:`
 .. math::
     z_s = \left(\frac{\rho_d}{\rho_s-\rho_d}\right)z_d
 
-For a complete derivation and discussion see for example Metivier et al. (2024) https://hal.science/hal-04632890v1)
+For a complete derivation and discussion see for example Metivier et al. (2024, https://hal.science/hal-04632890v1)
 
 
-What Islandslib is
-==================
-
-IslandsLib provides a simple function `IslandLens()` to model freshwater lenses without a prior knowledge of Finite Element Modeling. 
-Given a set of data and constraints if will model the freshwater lens of a *small* island. 
-A *small* island is here defined as an island without a river network. Lakes can be included (see examples).
-
-IslandsLib also provides a set of functions and classes to help 
-
-* model the poisson equation to model simple freshwater lenses  islands using the pyfreefem library and FreeFem++ software; 
-* Create single coastline contours from shapefile for this purpose.
-
-
-River networks will be included in  later versions of `IslendLens`. If you want to solve problems with river networks 
-you need to use the set of functions provided or to use pyFreeFem directly.
-
-IslandsLib also provides a data repository of Island contours. Please feel free to contribute !
 
 What IslandsLib is not
 ======================
@@ -55,25 +65,16 @@ What IslandsLib is not
 
 IslandsLib is not a Finite Element Model Solver
 ----------------------------------------------- 
+
 It relies on the pyFreeFem library developped by Olivier Devauchelle (https://github.com/odevauchelle/pyFreeFem) a python wrapper 
 around the FreeFem++ Solver (https://freefem.org/). 
 As such **both** pyFreeFem and FreeFem++ must be installed on your computer in order to use IslandsLib
 
-IslandsLib is not a plug and play IGN converter
------------------------------------------------
-functions are provided to help transform contours, especially those disclosed by the French Geographic Institute (IGN). The functions and procedures 
+IslandsLib is not a Plug and Play IGN Data Converter
+----------------------------------------------------
+
+Functions are provided to help transform contours, especially those disclosed by the French Geographic Institute (IGN). The functions and procedures 
 can be used with  basically any set of contours but theyr require a bit of work. 
 An example of single contour création from in IGN shapefile is given
 
 
-Installation
-============
-
-* Download the library from github
-* Open a terminal in the library directory
-* Run python setup.py install
-
-**Dependancies**
-
-* FreeFem++
-* pyFreeFem

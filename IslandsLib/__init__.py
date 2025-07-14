@@ -6,7 +6,7 @@ IslandLib
 
 __author__ = "François Métivier"
 __copyright__ = "Copyright 2025"
-__license__ = "GPL"
+__license__ = "CC-By-4.0"
 __version__ = "1.0"
 
 __all__ = [
@@ -25,10 +25,9 @@ __all__ = [
 import sys 
 sys.path.append("..")
 
-import sys
-
-
-# Add path to pyFreeFem
+############################
+# Add path to pyFreeFem here
+############################
 machine='home'
 if machine=='lab':
     sys.path.append('/home/francois/Nextcloud/src/pyFreeFem-master/')
