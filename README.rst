@@ -1,6 +1,6 @@
-====================================================
-IslandsLib: 2D modeling of small island water tables
-====================================================
+==========================================================
+IslandsLib: 2D Modeling of Small Islands Freshwater Lenses
+==========================================================
 
 
 IslandsLib is a library that provides  a set of functions and classes to help 
