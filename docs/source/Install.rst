@@ -48,6 +48,13 @@ Install IslandsLib
 ==================
 
 * Download the library from github
-* Open a terminal in the library directory
-* Run python setup.py install
+* *régler le pb du chemin vers pyfreefem*
+* Open a terminal (in admin mode) in the library directory and run
+  
+.. code:: bash
+
+    pip install .
+  
+For linux users :code:`sudo` recommended !
+
 

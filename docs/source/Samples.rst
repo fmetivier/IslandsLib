@@ -4,7 +4,7 @@ A simple freshwater lens
 
 Procedure
 ---------
-The simplest way to model an island's freshwater lens using IslandsLib is to use the ``IslandLens()``
+The simplest way to model an island's freshwater lens using IslandsLib is to use the :code:`IslandLens()`
 function that is meant to simplify FEM calculations in simple cases of Islands without river networks.
 
 For example suppose we want to model the form of the the Desirade island fresh water lens in the French Antilles Guadeloupe Department.
@@ -60,27 +60,25 @@ The string ``ttype``  is composed of three caracters p, q, and a followed by num
     rho = 1000 # freshwater
     rhos = 1025 # saltwater
     R = 0.19 # recharge m/year
-    R = R / 365.25 / 86400 # recharge m/s
-    K = 2.5e-5 # conductivity m/s
+    R = R / 365.25  # recharge m/d
+    K = 2.5e-5 * 86400 # conductivity m/d
 
     fi = 2*R*(rhos-rho)/K/rhos
 
 .. warning::
 
-    :math:`fi = \frac{2R(\rho_s-\rho_d)}{\langle K \rangle\rho_s}` is dimensionless so :math:`R` and :math:`K` have to be given in the same units
+    :math:`fi = \frac{2R(\rho_s-\rho_d)}{\langle K \rangle\rho_s}` is dimensionless so :math:`R` and :math:`K` 
+    have to be given in the same units (meters per day prefered see below).
   
 * Eventually we call the IslandLens function and pass the arguments.
 
 .. code:: python 
 
-    u, Th = il.IslandLens( islands, fname, ttype, fi, sub_sampling )
-
-
-At the end you can add ``plt.show()`` to visualize the results (l.27). 
+    u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands, fname, ttype, fi, sub_sampling , clockwise)
 
 
 
-Visual outputs include 
+Visual outputs are stored in pdf files. They include 
 
 * A plot of the solution for the water table and sample streamlines
 
@@ -95,13 +93,26 @@ Visual outputs include
 .. figure:: ./figures/FreeFemMesh.svg
 
 
+Mass balance of the lens 
+------------------------
+
+ if you wish to produce a csv output with the lens caracteristics (volume, area, recharge) you can use the :code:`IslandBalance()` function 
+
+.. code:: python 
+
+    il.IslandBalance("Desirade", Zm, dx, dy, R, K)
+
+which will output a csv file with the input parameters, recharge, conductivity, porosity and the calculated lens volume, area and 
+volumetric recharge.
+
+
+
 Comments
 --------
 
 * Coordinates must be in metric units (hence UTM for most cases). If you use latitudes and longitudes x- and y-distances are not conserved.
 * Note that in the case of Desirade we used values for conductivity form the nearby Marie Galante island, as there are not surveys on Desirade.
 * For a first try you can set `ttype` to `pq33` before adding an areal constraint. If your area is too small the number of triangles will be to high and the mesh generation will fail
-
 
 The full script is given below
 

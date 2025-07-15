@@ -1,18 +1,15 @@
 #####################################
-Directory of *Closed* Island Outlines
+Directory of *Closed* Island Contours
 #####################################
 
-Introduction
-============
+Foreword
+--------
 
-* This directory contains a list of closed island outlines that my students and I use for our studies.
-* This list is made available here and updated more or less regularly according to our needs. 
-* For the French islands, we use IGN data, and a methodology is provided below because, because, because...
+   The git repository contains a data directory. This directory contains a list of closed island outlines that my students and I use for our studies.
+   The list of islands is given below and updated more or less regularly according to our needs. For the French islands, we use IGN data, and a methodology is provided below because, because, because...
 
 Directory
-==========
-
-Here's a directory of the contours for those interested. Feel Free to contribute !
+---------
 
 * Guadeloupe
    * Grande Terre
@@ -21,6 +18,10 @@ Here's a directory of the contours for those interested. Feel Free to contribute
    * Désirade
 * Mayotte
    * Petite Terre 
+   * Lac Dziani on Petite Terre 
+* French Polynesia
+   * Rangiroa 
+      * Motus id: 782,1270,1384,1570,552,270,453,464,715,44,1043,667,34,1607, 1382, 152, 864 (Avatoru)
 * Antigua and Barbuda
    * Barbuda 
     

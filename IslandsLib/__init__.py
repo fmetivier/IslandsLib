@@ -71,8 +71,9 @@ from IslandsLib.Misc import *
 
 
 
-def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33", fi = 1e-4, sub_sampling = 10, clockwise=True, lakes = None, plot = True):
+def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33",  fi = 1e-4 , sub_sampling = 10, clockwise=True, lakes = None, plot = True):
     """Poisson Resolution for an Island (closed contour with null potential)
+
 
     Parameters
     ----------
@@ -83,7 +84,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
         ttype: str, optional 
             Triangle triangulation parameters. Defaults to "pq33a1000".
         fi: float, optional
-            value of the poisson coefficient
+            value of the Poisson coefficient (dimensionless). Defaults to 1e-4
         sub_sampling: int, optional
             sampling of the contour (1 = all points are preserved, 10 = one point every 10 points is conserved)
         lakes: boolean, None
@@ -173,8 +174,59 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
     plt.close()
     
     Zm = mask_data(X,Y,Z,p)
-    
+
+
+    # end     
     return u, Th, X, Y, Zm, dx, dy, itp
+
+
+def IslandBalance(islands = "Désirade", Z = None , dx = 10, dy = 10, R = 0.0025, K = 1, por = 0.25):
+    """given the matric Z of water table elevation calculates, lens area, lens water volume and volumetric recharge. 
+    Outputs results to csv file
+
+    Parameters
+    ----------
+    islands : str, optional
+        Island name, Defaults to Desirade
+    Z : array of floats
+        elevation of the water table, defaults to None 
+    dx : float
+        x-distance between to points in meters, defautls to 10 m
+    dy : float
+        y-distance between to points in meters, defautls to 10 m
+    R : float
+        recharge in meters / day. Defaults to 0.0025 m/d
+    K : float
+        Hydraulic conductivity in meters /day. Defaults to 1 m/d
+    por : float
+        porosity (dimensionless). Defaults to 0.025
+
+    Returns
+    -------
+    float: Volume of lens V
+    float: Area of lens S
+    float: Yearly volumetric Recharge Rec 
+        
+    """
+
+    #Volume of water stored in the lens
+    V = np.sum(np.nan_to_num(Z)) * por * dx * dy * 41
+
+    # Area of the lens 
+    S = len(Z[Z>0])*100
+
+    # yearly Volume of  recharge 
+    Rech = S*R*365.25
+    
+    print("Volume", V, "Surface", S, "Recharge", Rech)
+
+    oname = "output_%s.csv" % (islands)
+    f = open(oname,"w")
+    f.write("Island,R (m/d),K (m/d),por,Volume (m^3),Surface (m^2),Recharge (m^3/yr)\n")
+    f.write("%s,%f,%f,%f,%f,%f,%f\n" % (islands,R,K,por,V,S,Rech))
+    f.close()
+
+    return V,S,Rech
 
 if __name__ == '__main__':
 
