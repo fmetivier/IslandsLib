@@ -11,12 +11,12 @@ IslandsLib is a python library that provides a set of functions and classes to h
 * extract data from IGN (French National Geography Insitute) products.
 
 
-IslandsLib provides a simple function :code:`IslandLens()` to model freshwater lenses *without* a prior knowledge of Finite Element Modeling. 
+IslandsLib provides a simple function :func:`IslandLens()` to model freshwater lenses *without* a prior knowledge of Finite Element Modeling. 
 Given a set of data and constraints if will model the freshwater lens of a *small* island. 
 A *small* island is here defined as an island without a river network. 
 
 
-Lakes can be included (see examples), and river networks will be included in  later versions of :code:`IslandLens`. If you want to solve problems with river networks 
+Lakes can be included (see examples), and river networks will be included in  later versions of :func:`IslandLens`. If you want to solve problems with river networks 
 you need to use the set of functions provided or to use pyFreeFem directly.
 
 Functions used for IGN producs help to create single coastline contours from shapefile for the purpose of modeling the Poisson equation. 
@@ -28,7 +28,71 @@ Eventually IslandsLib also provides a repository of Island contours. Please feel
 What are Freshwater Lenses and Why Bother for Them
 ==================================================
 
-Carla's Intro
+
+Origin of Island Freshwater: Example of Rangiroa, French Polynesia
+-------------------------------------------------------------------
+
+An atoll is a ring-shaped island made up of a coral reef, built on the flanks of an ancient volcano and 
+surrounding a lagoon. These unique geological formations rise only a few meters above sea level; 
+they are therefore among the most vulnerable to sea level rise and extreme weather events.
+
+We here use the example of Rangiroa to present the challenges associated with the supply of fresh water to 
+these small islands. Rangiroa is the largest atoll in the Tuamotu archipelago of French Polynesia 
+(Figure :ref:`fig-rangiroaloc`). The "island" of the atoll, in the case of Rangiroa, comprises 415 small coral islands 
+called motus, of which only two are permanently inhabited. In 2017, its population represented 6% of the total 
+inhabitants of French Polynesia, or 2,700 inhabitants :cite:p:`white2007challenges`. 
+
+Atolls like Rangiroa face several constraints: low topography, lack of a hydrographic network, 
+geographic isolation, and high climate variability. These conditions severely limit access to freshwater, 
+which relies on rainwater harvesting, seawater desalination, and groundwater exploitation. However, desalination 
+involves particularly high operating costs, while rainfall is marked by strong seasonality and sensitive to 
+climate change. Groundwater therefore appears to be a key resource for securing freshwater supplies for island 
+inhabitants. However, little is still known about this resource which is vulnerable to climate effects and human actions.
+
+.. _fig-rangiroaloc:
+
+.. figure:: ./figures/rangiroaloc.png
+
+    GoogleEarth image of the Tuamotu and Rangiroa archipelago
+
+
+Freshwater Lens: a Fragile and Threatened Balance
+-------------------------------------------------
+
+Fresh groundwater comes from precipitation. This seeps into the porous coral reef soils and is temporarily 
+stored beneath the island before flowing out into the ocean or lagoon. This fresh groundwater rests 
+on the heavier salt water to form a lens (Figure :ref:`fig-atoll`), whose thickness 
+varies from a few tens of centimeters to about ten meters :cite:p:`bailey2009numerical`. 
+The contact zone between fresh and salt water constitutes a mixing zone between fresh and salt water, 
+also called the transition zone or interface.
+
+The shape of the lens depends on three factors: the width of the island, recharge (precipitation – evaporation) 
+and hydraulic conductivity :cite:p:`werner2017hydrogeology`. The volume contained in the lens also depends on the 
+porosity of the soil.
+The balance of this lens is fragile: its shape and volume can be impacted by natural 
+and anthropogenic phenomena. Indeed, the tides cause the water table to rise by hydrostatic pressure, 
+increasing the mixing zone. The freshwater-saltwater interface can also rise following excessive extraction. Finally, 
+rising sea levels would cause the freshwater-saltwater interface to rise by hydrostatic uplift, thus reducing 
+the volume of freshwater stored in the lens. All these processes contribute to the phenomenon of aquifer 
+salinization.
+
+Sustainable management of these aquifers therefore represents a real challenge, 
+particularly in the inhabited areas of these islands. It is crucial to determine the volume of 
+freshwater available, and the impact of salinization on this volume, in order to develop sustainable 
+extraction methods. To do this, it is necessary to estimate the stocks and flows of the lens, as well as 
+their potential changes.
+
+   
+
+.. _fig-atoll:
+
+.. figure:: ./figures/Atoll.png
+
+    Cross section of an atoll :cite:p:`werner2017hydrogeology`
+
+
+
+.. bibliography::
 
 
 Modeling an Island's Freshwater Lens 
@@ -56,7 +120,7 @@ Under theses assumptions the depth of the Freshwater-saltwater interface :math:`
 .. math::
     z_s = \left(\frac{\rho_d}{\rho_s-\rho_d}\right)z_d
 
-For a complete derivation and discussion see for example Metivier et al. (2024, https://hal.science/hal-04632890v1)
+For a complete derivation and discussion see for example :cite:t:`metivier2024bilan` (https://hal.science/hal-04632890v1)
 
 
 

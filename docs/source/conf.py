@@ -18,7 +18,11 @@ sys.path.insert(0, os.path.abspath(os.path.join("..","..")))
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc','sphinx.ext.coverage','sphinx.ext.napoleon']
+extensions = ['sphinx.ext.autodoc','sphinx.ext.coverage','sphinx.ext.napoleon','sphinxcontrib.bibtex']
+
+bibtex_default_style = 'unsrt'
+bibtex_reference_style = 'author_year' 
+bibtex_bibfiles = ['references.bib']
 
 
 templates_path = ['_templates']
