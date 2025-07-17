@@ -39,3 +39,6 @@ html_static_path = ['_static']
 html_sidebars = {
   "**": []
 }
+
+html_logo = "figures/logo.svg"
+
