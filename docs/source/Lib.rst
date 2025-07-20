@@ -1,13 +1,5 @@
-#######
 Library
-#######
-
-IGN and Topographic Data treatment
-==================================
-
-.. automodule:: IslandsLib.IGN
-   :members:
-   
+*******
 
 Custom Classes
 ==============
@@ -22,6 +14,13 @@ Finite Elements Modeling
 .. autofunction:: IslandsLib.IslandLens
 
 .. automodule:: IslandsLib.FEM
+   :members:
+   
+
+IGN and Topographic Data treatment
+==================================
+
+.. automodule:: IslandsLib.IGN
    :members:
    
 

@@ -121,6 +121,57 @@ def create_outer_vbn(borders, for_FF=False):
 
     return vertices, segments, nodes
 
+def add_lakes_vbn(vertices, segments, lakes, len_xpt):
+    """add lakes as  internal boundaries and create lake nodes
+
+    Parameters
+    ----------
+    vertices : list
+        list of vertices
+    segments : list
+        list of segments
+    lakes : list of rivers
+        island's lakes
+    len_xpt: int
+        original length of outer border (island contour)
+
+    Returns
+    -------
+    list
+        vertices
+    list
+        segments
+    list
+        lake nodes
+    list
+        lake center coordinates for holes calculation in triangle
+    """
+    
+    lnodes = []
+    holes  = []
+    for lake in lakes:
+        nodes = []
+        for i in range(len(lake.x)):
+            vertices.append((lake.x[i], lake.y[i]))
+            # Freefem indices begin at 1 !
+            segments.append([len_xpt + i, len_xpt + i + 1])
+            nodes.append(len_xpt + i)
+
+        segments.pop(-1)
+        segments.append([len_xpt + len(lake.x) - 1, len_xpt])
+
+        nodes.append(len_xpt)
+        print("==============%s nodes===========" % (lake.rname))
+        print(nodes)
+        lnodes.append(nodes)
+
+        lake.nodes = nodes
+        holes.append([np.mean(lake.x), np.mean(lake.y)])
+        len_xpt += len(lake.x)
+
+    print("Done with lakes")
+
+    return vertices, segments, lnodes, holes
 
 def add_inner_vbn(vertices, segments, rivers):
     """Add inner boundaries (rivers) to the list of vertices
@@ -128,9 +179,12 @@ def add_inner_vbn(vertices, segments, rivers):
 
     Parameters
     ----------
-    vertices: outer contour vertices
-    segments: outer contour segments
-    rivers: inner rivers
+    vertices: list
+        outer contour vertices
+    segments: list
+        outer contour segments
+    rivers: list of rivers
+        inner rivers
 
     Returns
     -------
@@ -522,15 +576,17 @@ def order_nodes(xv, yv, mesh, borders, plot=False):
     return borders
 
 
-def prepare_boundaries(borders, rivers = None, for_FF=False):
+def prepare_boundaries(borders,  lakes = None, rivers = None, for_FF=False):
     """Create the border contour from borders
     
     Parameters
     ----------
-    borders: list of riviers
+    borders: list of rivers
         external boundaries
     rivers: list of rivers
         internal rivers
+    lakes: list of rivers
+        island's lakes
     for_FF: bool
         if true, arranges segments and end nodes to match FreeFem mesh requirements
 
@@ -539,6 +595,7 @@ def prepare_boundaries(borders, rivers = None, for_FF=False):
     list of rivers: complete external and internal borders
     list of pairs of real numbers: vertices of border nodes
     list of pairs of integer numbers: border segments
+    list of pairs of intergers: holes coordinates
     
     Note
     ----
@@ -562,19 +619,29 @@ def prepare_boundaries(borders, rivers = None, for_FF=False):
     # in progress
     #
     ###########################################################
+
+    holes = []
+    if lakes:
+        print("Adding lakes as boundaries")
+        len_xpt = len(borders[0].x)
+        vertices, segments, lnodes, holes = add_lakes_vbn(vertices, segments, lakes, len_xpt)
+    
     if rivers:
-        print("Adding internal rivers as boundaries")
+        print("Adding rivers as boundaries")
         vertices, segments, rnodes = add_inner_vbn(vertices, segments, rivers)
 
     if rivers:
         for r in rivers:
             borders.append(r)
+    if lakes:
+        for l in lakes:
+            borders.append(l)
     for b in borders:
         print(b.rname, b.nodes[0], b.nodes[-1])
 
     # print(segments)
 
-    return borders, vertices, segments
+    return borders, vertices, segments, holes
 
 
 def create_triangle_mesh(borders, vertices, segments, holes=None, plot=False, ttype='p'):

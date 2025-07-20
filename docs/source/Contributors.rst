@@ -1,6 +1,5 @@
-############
 Contributors
-############
+************
 
 
 * François Métivier, Professor of Geophysics, IPGP & U. Paris Cité,

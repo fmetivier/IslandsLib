@@ -102,6 +102,10 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
         object: itp regular grid interpolator for Z
     """
 
+    # 
+    # read contour file
+    #
+    print(islands)
     f = open(fname,"r")
 
     lines = f.readlines()
@@ -113,10 +117,11 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
             y.append( float(l[1]) )
 
 
-    if not clockwise:
+    if not clockwise: # invert rotation
         x = np.array(x[::-1])
         y = np.array(y[::-1])
 
+    # if subsampling
     x = x[::sub_sampling]
     y = y[::sub_sampling]
 
@@ -128,8 +133,34 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
 
     b = [river(islands, x, y)]
 
-    borders, vertices, segments = prepare_boundaries(
-        b, [], for_FF=True)
+    lakes_list = []
+    if lakes:
+        for lake in lakes:
+            print(lake[0])
+            f = open(lake[1],"r")
+
+            lines = f.readlines()
+            f.close()
+            x, y = [], []
+            for line in lines:
+                if line[0] != "#": # skip header
+                    l = line.strip('\n').split(',')
+                    x.append( float(l[0]) )
+                    y.append( float(l[1]) )
+
+
+            if not clockwise: # invert rotation
+                x = np.array(x[::-1])
+                y = np.array(y[::-1])
+
+            # if subsampling
+            x = x[::sub_sampling]
+            y = y[::sub_sampling]
+
+            lakes_list.append(river(lake[0],x,y))
+
+    borders, vertices, segments, holes = prepare_boundaries(borders = b, lakes = lakes_list, rivers = None, for_FF=True)
+    
 
     ##############################################################
     #
@@ -141,7 +172,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
 
     # ttype = 'p'
     xv, yv, mesh, borders = create_triangle_mesh(
-        borders = borders, vertices = vertices, segments = segments, plot = plot, ttype = ttype )
+            borders = borders, vertices = vertices, segments = segments,  holes = holes, plot = plot, ttype = ttype )
 
 
     print("Creating FreeFem mesh...")
@@ -149,9 +180,15 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
         xv, yv, mesh, adapt = False, borders = borders, plot = plot)
 
     # sur une ile le contour est à 0
+    # on a lake it is given as a parameter.
     bcs = {}
     for T in Th_boundaries:
-        bcs[T.rname] = 0 * T.x
+        if T.rname == islands:
+            bcs[T.rname] = 0 * T.x
+        if lakes:
+            for lake in lakes:    
+                if T.rname == lake[0]:
+                    bcs[T.rname] = lake[2]*T.x
 
     for key, val in bcs.items():
         print(key, val)

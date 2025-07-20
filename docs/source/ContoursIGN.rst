@@ -1,4 +1,7 @@
 
+IGN data processing
+*******************
+
 Extracting continuous contours from IGN shapefiles
 ===================================================
 

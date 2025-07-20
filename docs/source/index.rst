@@ -1,5 +1,6 @@
+#######################################
 Welcome to IslandsLib's documentation !
-======================================
+#######################################
 
 
 .. toctree::
@@ -10,10 +11,10 @@ Welcome to IslandsLib's documentation !
    Introduction
    Install  
    Samples
-   ContoursIGN
    Directory
    Lib
    Contributors
+   ContoursIGN
    
 
 
