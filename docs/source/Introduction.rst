@@ -26,7 +26,7 @@ What are Freshwater Lenses and Why Bother for Them
 
 
 Origin of Island Freshwater: Example of Rangiroa, French Polynesia
--------------------------------------------------------------------
+------------------------------------------------------------------
 
 An atoll is a ring-shaped island made up of a coral reef, built on the flanks of an ancient volcano and 
 surrounding a lagoon. These unique geological formations rise only a few meters above sea level; 
@@ -52,8 +52,8 @@ inhabitants. However, little is still known about this resource which is vulnera
     GoogleEarth image of the Tuamotu and Rangiroa archipelago
 
 
-Freshwater Lens: a Fragile and Threatened Balance
--------------------------------------------------
+Freshwater Lens: a Fragile and Threatened resource
+--------------------------------------------------
 
 Fresh groundwater comes from precipitation. This seeps into the porous coral reef soils and is temporarily 
 stored beneath the island before flowing out into the ocean or lagoon. This fresh groundwater rests 
