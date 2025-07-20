@@ -109,29 +109,29 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
     f = open(fname,"r")
 
     lines = f.readlines()
-    x, y = [], []
+    xi, yi = [], []
     for line in lines:
         if line[0] != "#": # skip header
             l = line.strip('\n').split(',')
-            x.append( float(l[0]) )
-            y.append( float(l[1]) )
+            xi.append( float(l[0]) )
+            yi.append( float(l[1]) )
 
 
     if not clockwise: # invert rotation
-        x = np.array(x[::-1])
-        y = np.array(y[::-1])
+        xi = np.array(xi[::-1])
+        yi = np.array(yi[::-1])
 
     # if subsampling
-    x = x[::sub_sampling]
-    y = y[::sub_sampling]
+    xi = xi[::sub_sampling]
+    yi = yi[::sub_sampling]
 
     if plot:
         fig,ax = plt.subplots(1)
-        ax.plot(x,y)
-        for i in range(len(y)//100):
-            ax.text(x[100*i],y[100*i],i*100)
+        ax.plot(xi,yi)
+        for i in range(len(yi)//100):
+            ax.text(xi[100*i],yi[100*i],i*100)
 
-    b = [river(islands, x, y)]
+    b = [river(islands, xi, yi)]
 
     lakes_list = []
     if lakes:
@@ -199,9 +199,12 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
     # Plot the potential and streamlines
     #####################################
     
+    X, Y, Z, x, y, dx, dy, itp = create_grid_from_u(Th, u)
     fig, ax = plt.subplots(1)
-    fig, ax, X, Y, Z, dx, dy, itp = grid_plot_u(fig, ax, Th, u)
-    p = add_mask(ax, x, y, outer=True, extent=[min(x),max(x),min(y),max(y)])
+    fig, ax = grid_plot_u(fig, ax, Th, X, Y, Z)
+    p = add_mask(ax, xi, yi, outer=True, extent=[min(x),max(x),min(y),max(y)])
+    Zm = mask_data(X,Y,Z,p)
+    Zm = Z.copy()
 
 
 
@@ -210,8 +213,6 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
 
     plt.close()
     
-    Zm = mask_data(X,Y,Z,p)
-
 
     # end     
     return u, Th, X, Y, Zm, dx, dy, itp

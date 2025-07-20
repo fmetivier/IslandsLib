@@ -929,34 +929,35 @@ def plot_psi(Th, psi, ax):
     ax.tricontour(Th, psi, levels=10, cmap='Reds')
     Th.plot_boundaries(color='black')
 
-def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit=True, dxy = 10):
-    """Graphical representation of :math:`\Phi = \sqrt{u}` on an interpolated grid
-    with streamlines and contour mask
+
+def create_grid_from_u(Th, u, dupuit = True, fval = 0, dxy = 10):
+    """Create gridded values for the water table height Z from the
+    reconstructed  values u at each node of the mesh 
+
+    if dupuit :  :math:`Z = \sqrt{u}`
+
 
     Parameters
     ----------
-    fig: figure on which to plot
-    ax: axis on which to plot
-    Th: Th object
-    u: Poisson solution
-    stream_contour: int, default 12
-        contour number used to represent the streamlines
-    pstep: int, default 80
-        steps for the streamlines
-    fval: int, default 0
-        fill value for gridding
-    dupuit: bool, default True
-        is the solution of dupuit-boussinesq type
-    dxy: int, default 10
-        step in meters for the grid 
+    Th : Th object
+        mesh
+    u : array
+        nodal values of the water table 
+    dupuit : bool, optional
+        if yes :math:`u = Z^2`, by default True
+    fval : int, optional
+         fill value for gridding, by default 0
+    dxy : int, optional
+        grid step in meters, by default 10
 
     Returns
     -------
-    figure: fig 
-    axis: ax 
-    arrays: X, Y, Z
-    arrays: dx, dy 
-    object: itp regular grid interpolator for Z
+    arrays: 
+        X,Y,Z gridded positions and values of the water table
+    arrays: 
+        dx, dy step 
+    object: 
+        itp regular grid interpolator for Z
 
     """
     #bordures de la zone de calcul
@@ -981,11 +982,40 @@ def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit
 
     itp = RegularGridInterpolator( (x, y), Z.T, method='linear')
 
+    return X, Y, Z, x, y, dx, dy, itp
+
+def grid_plot_u(fig, ax, Th, X, Y, Z):
+    """Graphical representation of :math:`Z = \sqrt{u}` on an interpolated grid
+    with streamlines and contour mask
+
+    Parameters
+    ----------
+    fig: figure
+        figure on which to plot
+    ax: axis
+        axis on which to plot
+    Th: Th object
+        mesh and boundaries
+    X: array
+        X position matrix
+    Y: array
+        Y position matrix
+    Z: array
+        Z (water table) position matrix
+    
+    Returns
+    -------
+    figure: fig 
+    axis: ax 
+
+    """
     cs = ax.contourf(X, Y, Z, levels=20, cmap='Blues_r')
     cbar = fig.colorbar(cs, label="Piezometric Height (m)")
 
     cs2 = ax.contour(X, Y, Z, levels=20, colors='k', linewidths=0.1)
-    V, U = np.gradient(Z, y, x)
+    x = X[0,:]
+    y = Y[:,0]
+    V, U = np.gradient(Z, y,x)
     # ax.clabel(cs, inline=True, fontsize=10)
     cbar.add_lines(cs2)
 
@@ -993,9 +1023,9 @@ def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit
     # Pour les streamlines on choisi de les créer à partir d 'une équipotentielle
     # en espaçant les points de façon ~ régulière
     #
-    pos = list(cs.allsegs[stream_contour][0])  # le choix du contour est arbitraire et à tester !
+    pos = list(cs.allsegs[9][0])  # le choix du contour est arbitraire et à tester  ici on prend le contour médian!
     start = []
-    for p in pos[::pstep]:  # idem le choix de l'echantillonnage est arbitraire et à tester
+    for p in pos[::10]:  # idem le choix de l'echantillonnage est arbitraire et à tester
         # plt.plot(p[0], p[1], 'o', color='C3')
         for i in range(len(x)-1):
             if x[i] <= p[0] < x[i+1]:
@@ -1007,8 +1037,8 @@ def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit
         start.append([x[cx], y[cy]])
     print("starting points", start)
 
-    ax.streamplot(X, Y, -U, -V, color='C1', start_points = start, 
-                  linewidth=1, density=2)
+    ax.streamplot(X, Y, -U, -V, color='C3', start_points = start, 
+                  linewidth=0.5)
 
     Th.plot_boundaries(ax=ax, color='black')
 
@@ -1016,7 +1046,7 @@ def grid_plot_u(fig, ax, Th, u, stream_contour = 12, pstep=80 , fval = 0, dupuit
     plt.axis("square")
     plt.xlabel("X (m)")
     plt.ylabel("Y (m)")
-    return fig, ax, X, Y, Z, dx, dy, itp
+    return fig, ax
 
 def add_mask(ax, px, py, outer=False, extent=[]):
     """Mask to remove the very ugly and especially false extrapolated part
