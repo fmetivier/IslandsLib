@@ -1,7 +1,7 @@
 
 # Libraries
-import sys 
-sys.path.append("./..")
+# import sys 
+# sys.path.append("./..")
 
 import matplotlib.pyplot as plt
 
@@ -39,7 +39,9 @@ fi = 2 * R * 25 / K / 1025
 # Solve the problem
 #####################
 
-u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands, fname, ttype, fi, sub_sampling , clockwise)
+u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = fname,\
+     ttype = ttype, fi = fi, sub_sampling = sub_sampling , clockwise = clockwise,\
+     lakes= [], plot=False)
 
 ####################################
 # Output global balance to csv file

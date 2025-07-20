@@ -71,7 +71,7 @@ from IslandsLib.Misc import *
 
 
 
-def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33",  fi = 1e-4 , sub_sampling = 10, clockwise=True, lakes = None, plot = True):
+def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33",  fi = 1e-4 , sub_sampling = 10, clockwise=True, lakes = [], plot = True):
     """Poisson Resolution for an Island (closed contour with null potential)
 
 
@@ -159,7 +159,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", tt
 
             lakes_list.append(river(lake[0],x,y))
 
-    borders, vertices, segments, holes = prepare_boundaries(borders = b, lakes = lakes_list, rivers = None, for_FF=True)
+    borders, vertices, segments, holes = prepare_boundaries(borders = b, lakes = lakes_list, rivers = [], for_FF=True)
     
 
     ##############################################################

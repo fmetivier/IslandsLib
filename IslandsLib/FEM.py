@@ -673,7 +673,7 @@ def create_triangle_mesh(borders, vertices, segments, holes=None, plot=False, tt
     """
     print("Creating mesh...")
 
-    if holes is not None:
+    if holes:
         init = dict(vertices=vertices, segments=segments, holes=holes)
     else:
         init = dict(vertices=vertices, segments=segments)
