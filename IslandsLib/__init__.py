@@ -22,17 +22,6 @@ __all__ = [
 # Librairies
 #
 #############################
-import sys 
-sys.path.append("..")
-
-############################
-# Add path to pyFreeFem here
-############################
-machine='home'
-if machine=='lab':
-    sys.path.append('/home/francois/Nextcloud/src/pyFreeFem-master/')
-else:
-    sys.path.append('/home/metivier/Nextcloud/src/pyFreeFem-master/')
 
 import pyFreeFem as pyff
 

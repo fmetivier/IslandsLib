@@ -22,7 +22,7 @@ import IslandsLib as il
 #
 # 1 extraction des contours dans un dictionnaire en choisissant le niveau des plus hautes eaux
 #
-fname="/home/metivier/Nextcloud/Recherche/GroundWater/islands/data/Guadeloupe/LimiteTerreMer_GLP.shp"
+fname="../data/Examples/LimiteTerreMer_GLP.shp"
 reader = shapereader.Reader(fname)
 
 features = reader.records()
@@ -100,7 +100,7 @@ plt.ylabel("Y (m)")
 plt.axis("equal")
 plt.savefig('../docs/source/figures/fig5.svg', bbox_inches='tight')
 
-fname = "../data/Contours/Guadeloupe/Desirade.txt"
+fname = "../data/Contours/Atlantic/Guadeloupe/Desirade.txt"
 entete = "#Guadeloupe\n#Désirade\n#RGAF09 / UTM zone 20N\n#Source IGN\n#anticlockwise"
 il.output_to_file(fname,entete,x,y)
 

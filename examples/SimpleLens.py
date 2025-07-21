@@ -15,7 +15,7 @@ import IslandsLib as il
 islands = 'Desirade'
 
 # Path to filenmae containing contour
-fname = "../data/Contours/Guadeloupe/Desirade.txt"
+fname = "../data/Contours/Atlantic/Guadeloupe/Desirade.txt"
 
 #sub sampling
 sub_sampling = 50

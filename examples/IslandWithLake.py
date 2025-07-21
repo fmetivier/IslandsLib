@@ -18,11 +18,11 @@ import IslandsLib as il
 
 # Name of Island and path to contour
 islands = 'Petite Terre'
-island_fname = "../data/Contours/Mayotte/Mayotte_Petite_Terre.txt"
+island_fname = "../data/Contours/Indian/Mayotte/Mayotte_Petite_Terre.txt"
 
 # Name of lake and path to contour
 lake = "Dziani"
-lake_fname = "../data/Contours/Mayotte/Mayotte_Petite_Terre_dziani.txt"
+lake_fname = "../data/Contours/Indian/Mayotte/Mayotte_Petite_Terre_dziani.txt"
 
 lakes = [[lake, lake_fname, 0]] # list of lakes with file name and elevation of lake (masl)
 

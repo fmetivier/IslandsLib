@@ -1,8 +1,8 @@
 Tutorial
 ********
 
-A simple freshwater lens
-========================
+A Simple Freshwater Lens: the Desirade island (Guadeloupe)
+==========================================================
 
 Procedure
 ---------
@@ -95,7 +95,7 @@ Visual outputs are stored in pdf files. They include
 .. figure:: ./figures/FreeFemMesh.svg
 
 
-Mass balance of the lens 
+Mass Balance of the Lens 
 ------------------------
 
  if you wish to produce a csv output with the lens caracteristics (volume, area, recharge) you can use the :code:`IslandBalance()` function 
@@ -119,5 +119,92 @@ Comments
 The full script is given below
 
 .. literalinclude:: ../../examples/SimpleLens.py
+    :language: python 
+    :linenos:
+
+
+
+An Island with a Lake: the Case of Petite Terre and Lake Dziani (Mayotte)
+=========================================================================
+
+We here want to see the influence of a lake on the form of the water table. 
+The perfect example for this is the Petite Terre island of Mayotte. Lake Dziani is a hyper saline volcanic lake located north of the island
+its level on average is 0. 
+
+as for the simple lens we start by defining the parameters before calling :fnc:`IslandLens`. 
+
+firs we define the contour names and file locations 
+
+.. code:: python 
+
+    import matplotlib.pyplot as plt
+
+    import IslandsLib as il
+
+    #####################
+    # Set arguments
+    #####################
+
+    # Name of Island and path to contour
+    islands = 'Petite Terre'
+    island_fname = "../data/Contours/Indian/Mayotte/Mayotte_Petite_Terre.txt"
+
+    # Name of lake and path to contour
+    lake = "Dziani"
+    lake_fname = "../data/Contours/Indian/Mayotte/Mayotte_Petite_Terre_dziani.txt"
+
+Then we create a lake list as :func:`IslandLens` can handle multiple lakes 
+
+.. code:: python
+
+    lakes = [[lake, lake_fname, 0]] # list of lakes with file name and elevation of lake (masl)
+
+We proceed with the parameters need to solve the Poisson equation hence 
+
+* contour sub_sampling, 
+* Recharge and Conductvity 
+* Poisson coefficient 
+
+.. code:: python 
+
+    #sub sampling
+    sub_sampling = 9
+
+    #clockwise
+    clockwise = True
+
+    # Triangulation settings
+    ttype = 'pq33a10000'
+
+    # Parameters
+    # Infiltration
+    R = 1. / (365.25) * (1-0.8) #m/d 
+    #Conductivity
+    K = 9e-5*86400 # m/d
+
+
+    fi = 2 * R * 25 / K / 1025
+
+With all this set we can call :func:`IslandLens`
+
+.. code::python
+
+    u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = island_fname, lakes = lakes, ttype = ttype,  fi = fi , sub_sampling = sub_sampling, clockwise = clockwise, plot = True)
+
+
+The form of the lens is given  in figure :ref:`fig-mayotte`. 
+For a discussion on the shape of the water table and comparison with existing measurements see :cite:t:`metivier2024bilan` (spoiler: it seems to work :))
+
+.. _fig-mayotte:
+
+.. figure:: ./figures/Petite_Terre.svg
+
+    Modeled water table of Petite Terre island in Mayotte
+
+
+
+The full script is given below
+
+.. literalinclude:: ../../examples/IslandWithLake.py
     :language: python 
     :linenos:

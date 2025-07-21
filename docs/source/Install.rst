@@ -1,6 +1,7 @@
 Installation
 ************
 
+To work with Installaiton you need first to install FreeFem++ *then* pyFreeFem and evntually IslandsLib
 
 Install FreeFem++
 =================
@@ -21,39 +22,37 @@ This will install FreeFem properly.
 Install pyFreeFem
 =================
 
-At present there is no automated install (via pip for example). You must download the pyFreeFem from github as a zip
-of by cloning 
+to install pyFreeFem via pip, you must download the pyFreeFem library from the follwing fork on Github
 
 .. code:: bash
 
-    git clone https://github.com/odevauchelle/pyFreeFem.git
+    git clone https://github.com/fmetivier/pyFreeFem.git
 
 
+You must then open a terminal window in the main directory and enter
 
+.. code:: bash
 
-to use pyFreeFem you must then add its path in your python file:
+    pip install .
 
-.. code:: python
-
-    import sys
-    sys.path.append('/Your/Path/To/pyFreeFem-master/')
-    
-    import pyFreeFem as pyff
-
-Upon installation IslandsLib you will have to include the path manually. 
+Depending on your system and the way you work you may need administrator priviledges
 
 
 Install IslandsLib
 ==================
 
-* Download the library from github
-* *régler le pb du chemin vers pyfreefem*
-* Open a terminal (in admin mode) in the library directory and run
-  
+Once FreeFem++ and pyFreeFem are installed you can download IslandsLib from github 
+.. code:: bash
+
+    git clone https://github.com/fmetivier/IslandsLib.git
+
+
+open a terminal in the main directory and type 
+
 .. code:: bash
 
     pip install .
   
-For linux users :code:`sudo` recommended !
+Again depending on your environment you may need admin priviledges.
 
 
