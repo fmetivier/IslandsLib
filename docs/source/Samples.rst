@@ -107,6 +107,10 @@ Mass Balance of the Lens
 which will output a csv file with the input parameters, recharge, conductivity, porosity and the calculated lens volume, area and 
 volumetric recharge.
 
+.. note::
+
+    Here R and K must be given in meters / day
+
 
 
 Comments
@@ -128,12 +132,12 @@ An Island with a Lake: the Case of Petite Terre and Lake Dziani (Mayotte)
 =========================================================================
 
 We here want to see the influence of a lake on the form of the water table. 
-The perfect example for this is the Petite Terre island of Mayotte. Lake Dziani is a hyper saline volcanic lake located north of the island
+The perfect example for this is the Petite Terre island of Mayotte. Lake Dziani is a hyper saline 
+volcanic lake located north of the island
 its level on average is 0. 
 
-as for the simple lens we start by defining the parameters before calling :fnc:`IslandLens`. 
-
-firs we define the contour names and file locations 
+As for the simple lens we start by defining the parameters before calling :func:`IslandLens`. 
+First we define the contour names and file locations 
 
 .. code:: python 
 
@@ -187,7 +191,7 @@ We proceed with the parameters need to solve the Poisson equation hence
 
 With all this set we can call :func:`IslandLens`
 
-.. code::python
+.. code:: python
 
     u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = island_fname, lakes = lakes, ttype = ttype,  fi = fi , sub_sampling = sub_sampling, clockwise = clockwise, plot = True)
 

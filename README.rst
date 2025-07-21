@@ -10,4 +10,4 @@ IslandsLib is a library that provides  a set of functions and classes to help
 
 IslandsLib also provides a data repository of Island contours. **Contributions welcome** !
 
-For more information (installation procedure, sample scripts, motivations) please consult the documentation  https://morpho.ipgp.fr/IslandsLib/
+For more information (installation procedure, sample scripts, motivations) please see the documentation  https://morpho.ipgp.fr/IslandsLib/
