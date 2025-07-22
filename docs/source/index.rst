@@ -13,7 +13,7 @@ Welcome to IslandsLib's documentation !
    Samples
    Directory
    Lib
-   Contributors
+   RealIslands
    ContoursIGN
    
 

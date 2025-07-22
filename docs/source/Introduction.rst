@@ -133,3 +133,10 @@ can be used with  basically any set of contours but they require a bit of work.
 An example of single contour création from in IGN shapefile is given
 
 
+Contributors
+============
+
+
+* François Métivier, Professor of Geophysics, IPGP & U. Paris Cité,
+* Carla Consani-Carré, Bachelor of Arts and Sciences, Institut d'études politiques de Paris & IPGP 
+

@@ -1,9 +1,4 @@
-"""
-    
-    Solution of the Poisson equation for the Island of Petite Terre in Mayotte 
-    Petite Terre ahas a large volcanic and hyper saline lake, the Dziani lake which elevation is at sea-level
 
-"""
 # Libraries
 # import sys 
 # sys.path.append("./..")
@@ -16,25 +11,20 @@ import IslandsLib as il
 # Set arguments
 #####################
 
-# Name of Island and path to filenmae containing contour
-islands = 'Mystery island'
-fname = "../data/Examples/MysteryIsland.txt"
+# Name of Island
+islands = 'Desirade'
 
-
-# Name of lake and path to contour
-lake = "Mystery Lake"
-lake_fname = "../data/Examples/MysteryLake.txt"
-
-lakes = [[lake, lake_fname, 0]] # list of lakes with file name and elevation of lake (masl)
+# Path to filenmae containing contour
+fname = "../data/Contours/Atlantic/Guadeloupe/Desirade.txt"
 
 #sub sampling
-sub_sampling = 2
+sub_sampling = 50
 
 #clockwise
 clockwise = False
 
 # Triangulation settings
-ttype = 'pq33a1000'
+ttype = 'pq33a10000'
 
 # Parameters
 # Infiltration
@@ -48,13 +38,12 @@ fi = 2 * R * 25 / K / 1025
 #####################
 # Solve the problem
 #####################
+
 u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = fname,\
      ttype = ttype, fi = fi, sub_sampling = sub_sampling , clockwise = clockwise,\
-     lakes= lakes, plot=False)
+     lakes= [], plot=False)
 
 ####################################
 # Output global balance to csv file
 ####################################
-il.IslandBalance("Mystery", Zm, dx, dy, R, K)
-
-
+il.IslandBalance("Desirade", Zm, dx, dy, R, K)
