@@ -1,6 +1,37 @@
 About IslandsLib
 ****************
 
+Islandslib is a python library to estimate the shape of small islands freshwater lenses
+
+Why IslandsLib ?
+================
+
+
+    «  We don’t manage saltwater intrusion, we’re victims of it » 
+    
+    *Honorable Ralph Regenvanu, Minister of Environment, Vanuatu.* 
+
+Side event « CITIES AND REGIONS AT THE EDGE: HYBRID AND SOFT SOLUTIONS FOR A RESILIENT FUTURE » , 
+Ocean Rise and Coastal Resilience Summit, 07/06/2025. 
+
+
+
+    « When you live on such an island, you know that the relationship between freshwater and ocean is not a theory. »
+
+    *Samira Ben Ali, Youth Parliament for Water, talking about Mayotte.*
+
+
+« From UNOC3 to 2026 UNWC: From Source to Sea: Bridging Efforts on Freshwater and Ocean Conservation and Sustainable Management », 
+Third United Nations Ocean Conference, 11/06/2025.
+
+
+There are tens of thousands of islands where freshwater is already an issue to its inhabitants.
+As the sea level rises the problem will become even more stringent. 
+Having knowledge of the volumes and fluxes of water is essential in order to imagine a sustainable future 
+for these communities.
+Alone no researcher can. As a community maybe. 
+IslandsLib is there to help volunteers participate to this effort without advanced  knowledge in modeling techniques.
+
 What Islandslib is
 ==================
 
@@ -19,6 +50,20 @@ Functions used for IGN products are meant to help you create single coastline co
 They can also be used to extract elevations from DEMS for different purposes (defining boundary conditions in particular). 
 
 Eventually IslandsLib also provides a repository of Island contours. Please feel free to contribute !
+
+
+What IslandsLib is not
+======================
+
+
+**IslandsLib is not a Finite Element Model Solver** It relies on the pyFreeFem library developped by Olivier Devauchelle (https://github.com/odevauchelle/pyFreeFem) a python wrapper 
+around the FreeFem++ Solver (https://freefem.org/). 
+As such **both** pyFreeFem and FreeFem++ must be installed on your computer in order to use IslandsLib
+
+**IslandsLib is not a Plug and Play IGN Data Converter** Functions are provided to help transform contours, especially those disclosed by the French Geographic Institute (IGN). The functions and procedures 
+can be used with  basically any set of contours but they require a bit of work. 
+An example of single contour création from in IGN shapefile is given
+
 
 
 What are Freshwater Lenses and Why Bother for Them
@@ -92,7 +137,7 @@ their potential changes.
 
 
 Modeling an Island's Freshwater Lens 
-====================================
+------------------------------------
 
 Under certain conditions, the water table of an island can be modeled using the following form of the *Poisson* equation,
 named after the French Mathematician Simeon Denis Poisson (1781-1840):
@@ -120,19 +165,6 @@ For a complete discussion see for example :cite:t:`metivier2024bilan` (https://h
 
 
 
-What IslandsLib is not
-======================
-
-
-**IslandsLib is not a Finite Element Model Solver** It relies on the pyFreeFem library developped by Olivier Devauchelle (https://github.com/odevauchelle/pyFreeFem) a python wrapper 
-around the FreeFem++ Solver (https://freefem.org/). 
-As such **both** pyFreeFem and FreeFem++ must be installed on your computer in order to use IslandsLib
-
-**IslandsLib is not a Plug and Play IGN Data Converter** Functions are provided to help transform contours, especially those disclosed by the French Geographic Institute (IGN). The functions and procedures 
-can be used with  basically any set of contours but they require a bit of work. 
-An example of single contour création from in IGN shapefile is given
-
-
 Contributors
 ============
 
@@ -140,3 +172,8 @@ Contributors
 * François Métivier, Professor of Geophysics, IPGP & U. Paris Cité,
 * Carla Consani-Carré, Bachelor of Arts and Sciences, Institut d'études politiques de Paris & IPGP 
 
+Support
+=======
+
+* We are indepted to **adoptacoastline** NGO who gave us access to the blue zone of UNOC in 2025 and enabled us to meet  representatives of small islads states to discuss the issues of freshwater and occean rise.
+* This work is partially supported by the RESAM project. 
