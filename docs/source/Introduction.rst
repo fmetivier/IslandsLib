@@ -1,36 +1,6 @@
 About IslandsLib
 ****************
 
-Islandslib is a python library to estimate the shape of small islands freshwater lenses
-
-Why IslandsLib ?
-================
-
-
-    «  We don’t manage saltwater intrusion, we’re victims of it » 
-    
-    *Honorable Ralph Regenvanu, Minister of Environment, Vanuatu.* 
-
-Side event « CITIES AND REGIONS AT THE EDGE: HYBRID AND SOFT SOLUTIONS FOR A RESILIENT FUTURE » , 
-Ocean Rise and Coastal Resilience Summit, 07/06/2025. 
-
-
-
-    « When you live on such an island, you know that the relationship between freshwater and ocean is not a theory. »
-
-    *Samira Ben Ali, Youth Parliament for Water, talking about Mayotte.*
-
-
-« From UNOC3 to 2026 UNWC: From Source to Sea: Bridging Efforts on Freshwater and Ocean Conservation and Sustainable Management », 
-Third United Nations Ocean Conference, 11/06/2025.
-
-
-There are tens of thousands of islands where freshwater is already an issue to its inhabitants.
-As the sea level rises the problem will become even more stringent. 
-Having knowledge of the volumes and fluxes of water is essential in order to imagine a sustainable future 
-for these communities.
-Alone no researcher can. As a community maybe. 
-IslandsLib is there to help volunteers participate to this effort without advanced  knowledge in modeling techniques.
 
 What Islandslib is
 ==================
@@ -97,7 +67,7 @@ inhabitants. However, little is still known about this resource which is vulnera
     GoogleEarth image of the Tuamotu and Rangiroa archipelago
 
 
-Freshwater Lens: a Fragile and Threatened resource
+Freshwater Lens: a Fragile and Threatened Resource
 --------------------------------------------------
 
 Fresh groundwater comes from precipitation. This seeps into the porous coral reef soils and is temporarily 
@@ -149,7 +119,7 @@ where :math:`\Delta z_d` is the Laplacian of the water table elevation :math:`z_
 :math:`K` is the average hydraulic conductivity, and :math:`\rho_s,\rho_d` are the densities of seawater and freshwater respectively.
 
 
-The resulting stationnary water table corresponds to an average level. This model assumes that
+The resulting stationnary water table corresponds to an **average level**. This model assumes that
 
 #. the lens is fully developped, hence there is salwater everywhere beneath the freshwater;
 #. the vertical component of velocity in the lens is neglected (Dupuit-Boussinesq approximation);
@@ -169,11 +139,11 @@ Contributors
 ============
 
 
-* François Métivier, Professor of Geophysics, IPGP & U. Paris Cité,
+* François Métivier, Professor of Geophysics, IPGP & U. Paris Cité, metivier[@]ipgp.fr
 * Carla Consani-Carré, Bachelor of Arts and Sciences, Institut d'études politiques de Paris & IPGP 
 
 Support
 =======
 
-* We are indepted to **adoptacoastline** NGO who gave us access to the blue zone of UNOC in 2025 and enabled us to meet  representatives of small islads states to discuss the issues of freshwater and occean rise.
-* This work is partially supported by the RESAM project. 
+* We are indepted to `adoptacoastline <https://www.adoptacoastline.org>`_ NGO who gave us the opportunity to access  the blue zone of UNOC in 2025, and meet with representatives of small island developing states (SIDS) who expressed their deep concern about the impact of rising sea levels on their resources.
+* This work is supported by the RESAM project (Ressource en eau et stratégies d'adaptation pour faire face à la pénurie : le cas de Mayotte) and the Geological fluid Dynamics Laboratory of IPGP. 

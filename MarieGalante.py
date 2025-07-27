@@ -12,10 +12,10 @@ import IslandsLib as il
 #####################
 
 # Name of Island
-islands = 'Desirade'
+islands = 'Marie Galante'
 
-# Path to filenmae containing contour
-fname = "../data/Contours/Atlantic/Guadeloupe/Desirade.txt"
+# Path to filename containing contour
+fname = "../data/Contours/Atlantic/Guadeloupe/Marie_Galante.txt"
 
 #sub sampling
 sub_sampling = 50
@@ -31,7 +31,7 @@ ttype = 'pq33a10000'
 R  = 0.19 # m/year
 R = R / 365.25 # infiltration m/d
 # Conductivity
-K = 2.5e-5*86400 # conductivity m/d
+K = 2e-5*86400 # conductivity m/d
 
 fi = 2 * R * 25 / K / 1025
 
@@ -43,7 +43,9 @@ u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = fname,\
      ttype = ttype, fi = fi, sub_sampling = sub_sampling , clockwise = clockwise,\
      lakes= [], plot=False)
 
+print(np.max(Y))
+
 ####################################
 # Output global balance to csv file
 ####################################
-il.IslandBalance("Desirade", Zm, dx, dy, R, K)
+il.IslandBalance("Marie Galante", Zm, dx, dy, R, K)

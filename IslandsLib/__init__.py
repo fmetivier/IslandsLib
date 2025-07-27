@@ -250,7 +250,7 @@ def IslandBalance(islands = "Désirade", Z = None , dx = 10, dy = 10, R = 0.0025
     oname = "output_%s.csv" % (islands)
     f = open(oname,"w")
     f.write("Island,R (m/d),K (m/d),por,Volume (m^3),Surface (m^2),Recharge (m^3/yr)\n")
-    f.write("%s,%f,%f,%f,%f,%f,%f\n" % (islands,R,K,por,V,S,Rech))
+    f.write("%s,%.2e,%.2e,%.2e,%.2e,%.2e,%.2e\n" % (islands,R,K,por,V,S,Rech))
     f.close()
 
     return V,S,Rech

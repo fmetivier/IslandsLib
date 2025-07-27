@@ -1,6 +1,6 @@
-#######################################
-Welcome to IslandsLib's documentation !
-#######################################
+#####################################
+Welcome to IslandsLib's documentation
+#####################################
 
 
 .. toctree::
@@ -15,6 +15,7 @@ Welcome to IslandsLib's documentation !
    Lib
    RealIslands
    ContoursIGN
+   Issues
    
 
 

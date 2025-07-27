@@ -2,46 +2,6 @@ Real Islands
 ************
 
 Let us now turn to real islands. 
-This page is regularly updated when new islands are included and also when new data enable 
-to strengthen the modeling and predictions
-
-.. |date| date::
-
-*Last modification* |date|
-
-Summary table
-=============
-
-.. list-table:: Parameters used and water balance obtained
-  :header-rows: 1
-
-  * - Island
-    - R (:math:`m/d`)
-    - K (:math:`m/d`)
-    - por
-    - Volume (:math:`m^3`)
-    - Surface (:math:`m^2`)
-    - Recharge (:math:`m^3/yr`)
-  
-
-  * - Avatoru
-    - 0.000828
-    - 14.6
-    - 0.25
-    - 1380643
-    - 872900
-    - 263892
-
-  
-  * - Petite Terre
-    - 0.000548
-    - 3.456000
-    - 0.30
-    - 151129355
-    - 10484300
-    - 2096860
-
-
 
 Avatoru Motu in Rangiroa (Polynésie Française)
 ===============================================
@@ -78,6 +38,47 @@ Results
 * One piezometer exists on the islands and the average height of the water table coincides with the reconstruction obtained. 
 
 .. figure:: ./figures/Avatoru.svg
+
+
+
+The Desirade island (Guadeloupe)
+================================
+
+Parameters
+----------
+.. code:: python
+
+    # Name of Island
+    islands = 'Desirade'
+
+    # Path to filename containing contour
+    fname = "IslandsLib/data/Contours/Atlantic/Guadeloupe/Desirade.txt"
+
+    #sub sampling
+    sub_sampling = 50
+
+    #clockwise
+    clockwise = False
+
+    # Triangulation settings
+    ttype = 'pq33a10000'
+
+    # Parameters
+    # Infiltration
+    R  = 0.19 # m/year
+    R = R / 365.25 # infiltration m/d
+    # Conductivity
+    K = 1e-6*86400 # conductivity m/d
+
+    fi = 2 * R * 25 / K / 1025
+
+Results
+-------
+
+* There are only two wells in Desirade. The problem for the time being is that their UTM coordinates to not correspond to the UTM coordinates of the island contour 
+* Springs exist but there again we have a problem as the elevation is not correct.
+
+.. figure:: ./figures/PhiPlot.svg
 
 
 
@@ -125,9 +126,7 @@ Parameters
     # Infiltration
     R = 1. / (365.25) * (1-0.8) #m/d 
     #Conductivity
-    K = 4e-5*86400 # m/d
-    # Porosity
-    por = 0.3
+    K = 9e-5*86400 # m/d
 
 
     fi = 2 * R * 25 / K / 1025
@@ -146,3 +145,24 @@ For a discussion on the shape of the water table and comparison with existing me
     Modeled water table of Petite Terre island in Mayotte
 
 
+Balances
+========
+
+.. list-table:: Balances
+  :header-rows: 1
+
+  * - Island
+    - R (m/d)
+    - K (m/d)
+    - por
+    - Volume (m^3)
+    - Surface (m^2)
+    - Recharge (m^3/yr)
+
+  * - Avatoru
+    - 0.000828
+    - 14.6
+    - 0.25
+    - 1380643
+    - 872900
+    - 263892

@@ -1,0 +1,1 @@
+rsync -av ./build/html/  morphoadmin@morpho.ipgp.fr:dev/islandslib/

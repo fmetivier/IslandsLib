@@ -14,7 +14,7 @@ import IslandsLib as il
 # Name of Island
 islands = 'Mystery island'
 
-# Path to filenmae containing contour
+# Path to filename containing contour
 fname = "../data/Examples/MysteryIsland.txt"
 
 #sub sampling

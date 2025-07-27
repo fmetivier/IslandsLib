@@ -1,7 +1,7 @@
 Installation
 ************
 
-To work with Installaiton you need first to install FreeFem++ *then* pyFreeFem and evntually IslandsLib
+To work with IslandsLib you need first to install FreeFem++ *then* pyFreeFem and *eventually* IslandsLib
 
 Install FreeFem++
 =================

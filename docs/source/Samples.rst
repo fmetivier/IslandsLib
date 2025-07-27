@@ -17,7 +17,7 @@ For example suppose we want to model the form of the water table of  the Mystery
 
     Mystery Island contour
 
-there are two steps 
+There are tw four steps 
 
 * We start by setting some values that will be passed to the main function as arguments namely the name of Island and the path to the file where the island contour is stored 
 
@@ -26,7 +26,7 @@ there are two steps
     # Name of Island
     islands = 'Mystery island'
 
-    # Path to filenmae containing contour
+    # Path to filename containing contour
     fname = "../data/Examples/MysteryIsland.txt"
 
 * Second, we set the sub sampling rate of the contour. Often the contours are far too precise for FEM computation at the scale of an entire island. 
@@ -40,10 +40,11 @@ by default the sub sampling rate is 10 but in the case of Desirade a sampling ra
 
 .. warning::
 
-    If the contour is complex and the sub sampling rate too low the triangulation will probably fail 
+    If the contour is complex and the sub sampling rate too low the triangulation will probably fail. 
+    This most often comes from the fact that nodes are too close to one another.
 
 
-* Third, we define the parameter of the triangulation. 
+* Third, we define the parameters of the Triangulation
 
 .. code:: python
 
@@ -53,7 +54,7 @@ by default the sub sampling rate is 10 but in the case of Desirade a sampling ra
 The string ``ttype``  is composed of three caracters p, q, and a followed by numbers the meaning of which is as follows
 
    *  p: we are making a planar straight line graph (a collection of segments and vertices);
-   *  q: we are imposing a constraint of 33° angle for the triangles (equilateral triangles);
+   *  q: we are (inasmuch as possible) imposing a constraint of 33° angle for the triangles (equilateral triangles);
    *  a: the area of the triangle is less or equal to 1000 :math:`m^2`. 
 
  There are other options and for more detail please refer to https://rufat.be/triangle/index.html
@@ -77,7 +78,7 @@ The string ``ttype``  is composed of three caracters p, q, and a followed by num
     :math:`fi = \frac{2R(\rho_s-\rho_d)}{\langle K \rangle\rho_s}` is dimensionless so :math:`R` and :math:`K` 
     have to be given in the same units (meters per day prefered see below).
   
-* Eventually we call the IslandLens function and pass the arguments.
+* Eventually once all the parameters have been set we call the :func:`IslandLens` function and pass our parameters as arguments.
 
 .. code:: python 
 
@@ -122,15 +123,15 @@ volumetric recharge.
 
 .. note::
 
-    Here R and K must be given in meters / day
+    For the time being :math:`R` and :math:`K` must be given in meters / day
 
 
 
 Comments
 --------
 
-* Coordinates must be in metric units (hence UTM for most cases). If you use latitudes and longitudes x- and y-distances are not conserved.
-* Note that in the case of Mystery island we used realsitic values for conductivity taken from the Marie Galante island in Guadeloupe.
+* Coordinates must be in metric units (hence UTM for most cases). If you use latitudes and longitudes the modeling will probably work but as the x- and y-distances are not conserved the results will be flawed.
+* Note that in the case of Mystery island we used realistic values for conductivity taken from the Marie Galante island in Guadeloupe.
 * For a first try you can set `ttype` to `pq33` before adding an areal constraint. If your area is too small the number of triangles will be to high and the mesh generation will fail
 
 The full script is given below

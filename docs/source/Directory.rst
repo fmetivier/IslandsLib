@@ -10,17 +10,20 @@ Foreword
 List of files
 =============
 
-* Guadeloupe
-   * Grande Terre
-   * Les Saintes (Terre Haut, Terre Bas, Grand Ilet, Ilet à Cabrit)
-   * Marie Galante
-   * Désirade
-* Mayotte
-   * Petite Terre 
-   * Lac Dziani on Petite Terre 
-* French Polynesia
-   * Rangiroa 
-      * Motus id (IGN): 782,1270,1384,1570,552,270,453,464,715,44,1043,667,34,1607, 1382, 152, 864 (Avatoru)
-* Antigua and Barbuda
-   * Barbuda 
+* Atlantic ocean
+   * Guadeloupe
+      * Grande Terre
+      * Les Saintes (Terre Haut, Terre Bas, Grand Ilet, Ilet à Cabrit)
+      * Marie Galante
+      * Désirade
+   * Antigua and Barbuda
+      * Barbuda 
+* Indian Ocean
+   * Mayotte
+      * Petite Terre 
+      * Lac Dziani on Petite Terre 
+* Pacific Ocean
+   * French Polynesia
+      * Rangiroa 
+         * Motus id (IGN): 782,1270,1384,1570,552,270,453,464,715,44,1043,667,34,1607, 1382, 152, 864 (Avatoru)
     
