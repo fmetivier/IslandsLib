@@ -17,6 +17,18 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+  "triangle",
+  "numpy",
+  "scipy",
+  "matplotlib",
+  "cartopy",
+  "shapely",
+  "gdal",
+  "geopandas",
+  "pandas"
+]
+
 license = "CC-BY-SA-4.0"
 license-files = ["LICEN[CS]E*"]
 

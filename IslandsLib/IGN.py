@@ -16,17 +16,6 @@ __version__ = "1.0"
 #
 #############################
 import sys 
-sys.path.append("..")
-
-import sys
-
-
-# Add path to pyFreeFem
-machine='home'
-if machine=='lab':
-    sys.path.append('/home/francois/Nextcloud/src/pyFreeFem-master/')
-else:
-    sys.path.append('/home/metivier/Nextcloud/src/pyFreeFem-master/')
 
 import pyFreeFem as pyff
 

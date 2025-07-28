@@ -5,17 +5,18 @@ About IslandsLib
 What Islandslib is
 ==================
 
-IslandsLib is a python library that provides a set of functions and classes to help 
-solve the poisson equation to model  freshwater lenses of islands using the pyfreefem library and FreeFem++ software; 
+IslandsLib is a python library that provides a set of functions and classes to build a simple
+2D model of and island's freshwater lense.
 
-IslandsLib provides a simple function :func:`IslandLens()` to model freshwater lenses *without* a prior knowledge of Finite Element Modeling. 
-Given a set of data and constraints if will model the freshwater lens of a *small* island. 
+IslandsLib builds on the pyfreefem library and FreeFem++ software to  provide a simple function :func:`IslandLens()` 
+to model freshwater lenses *without* a prior knowledge of Finite Element Modeling. 
+Given a set of contour data and constraints if will model the freshwater lens of a *small* island. 
 A *small* island is here defined as an island without a river network. 
 
 Lakes can be included (see examples), and river networks will be included in  later versions of :func:`IslandLens`. If you want to solve problems with river networks 
 you need to use the set of functions provided or to use pyFreeFem directly.
 
-IslandsLib also provide functions to process  IGN (French National Geography Insitute) products.
+IslandsLib also providesfunctions to process  IGN (French National Geography Insitute) products.
 Functions used for IGN products are meant to help you create single coastline contours from shapefile for the purpose of modeling the Poisson equation. 
 They can also be used to extract elevations from DEMS for different purposes (defining boundary conditions in particular). 
 
