@@ -54,5 +54,15 @@ open a terminal in the main directory and type
     pip install .
   
 Again depending on your environment you may need admin priviledges.
+If everything goes swiftly, pip will install, if needed, the following dependancies:
 
+* triangle,
+* numpy,
+* scipy,
+* matplotlib,
+* cartopy,
+* shapely,
+* gdal,
+* geopandas,
+* pandas
 
