@@ -24,7 +24,6 @@ dependencies = [
   "matplotlib",
   "cartopy",
   "shapely",
-  "gdal",
   "geopandas",
   "pandas"
 ]

@@ -66,3 +66,9 @@ If everything goes swiftly, pip will install, if needed, the following dependanc
 * geopandas,
 * pandas
 
+
+Tested
+======
+
+* Debian 12 
+* Mac OS catalina 10.15 on imac with i5 processors. FreeFemm++ and pyFreeFem ok. IslandsLib failed because gdal library could not be installed easily.

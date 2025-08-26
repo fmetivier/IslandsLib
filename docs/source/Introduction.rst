@@ -16,7 +16,7 @@ A *small* island is here defined as an island without a river network.
 Lakes can be included (see examples), and river networks will be included in  later versions of :func:`IslandLens`. If you want to solve problems with river networks 
 you need to use the set of functions provided or to use pyFreeFem directly.
 
-IslandsLib also providesfunctions to process  IGN (French National Geography Insitute) products.
+IslandsLib also provides functions to process  IGN (French National Geography Institute) products.
 Functions used for IGN products are meant to help you create single coastline contours from shapefile for the purpose of modeling the Poisson equation. 
 They can also be used to extract elevations from DEMS for different purposes (defining boundary conditions in particular). 
 
@@ -98,13 +98,13 @@ their potential changes.
 
 .. _fig-atoll:
 
-.. figure:: ./figures/Atoll.png
+.. figure:: ./figures/Motu.svg
+    :width: 600
 
-    Cross section of an atoll :cite:p:`werner2017hydrogeology`
+    Idealised cross section of a Motu. Simplified from :cite:p:`werner2017hydrogeology`
 
 
 
-.. bibliography::
 
 
 Modeling an Island's Freshwater Lens 
@@ -120,13 +120,21 @@ where :math:`\Delta z_d` is the Laplacian of the water table elevation :math:`z_
 :math:`K` is the average hydraulic conductivity, and :math:`\rho_s,\rho_d` are the densities of seawater and freshwater respectively.
 
 
-The resulting stationnary water table corresponds to an **average level**. This model assumes that
+The resulting stationnary water table corresponds to an **average level**. This model pictured on :ref:`fig-PT` assumes  that
 
-#. the lens is fully developped, hence there is salwater everywhere beneath the freshwater;
+
+#. the lens is fully developped, hence pores are saturated with salt (sea) water everywhere beneath the freshwater;
 #. the vertical component of velocity in the lens is neglected (Dupuit-Boussinesq approximation);
-#. the flow velocity in the salwater is negligible and pressure balance at the saltwater-freshwater interface is hydrostatic;
-#. the interface between salt and freshwater is thin.
-  
+#. the flow velocity in the salt water is negligible and pressure balance at the saltwater-freshwater interface is hydrostatic;
+#. the interface between salt and freshwater is thin (we neglect the brackish water zone of figure :ref:`fig-atoll`).
+
+.. _fig-PT:
+
+.. figure:: ./figures/coupe_PT_WE.svg
+    :width: 400
+
+    Cross section of the Freshwater Lens of Petite Terre :cite:p:`metivier2024bilan`
+
 Under theses assumptions the depth of the Freshwater-saltwater interface :math:`z_s` can be deduced from the water table by
 
 .. math::
@@ -134,6 +142,10 @@ Under theses assumptions the depth of the Freshwater-saltwater interface :math:`
 
 For a complete discussion see for example :cite:t:`metivier2024bilan` (https://hal.science/hal-04632890v1)
 
+References
+----------
+
+.. bibliography::
 
 
 Contributors
