@@ -35,8 +35,8 @@ import time
 import geopandas
 import pandas
 
-from osgeo import gdal
-from osgeo import ogr
+# from osgeo import gdal
+# from osgeo import ogr
 import cartopy.crs as ccrs
 import cartopy.io.shapereader as shapereader
 
