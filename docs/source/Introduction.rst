@@ -140,7 +140,8 @@ Under theses assumptions the depth of the Freshwater-saltwater interface :math:`
 .. math::
     z_s = \left(\frac{\rho_d}{\rho_s-\rho_d}\right)z_d
 
-For a complete discussion see for example :cite:t:`metivier2024bilan` (https://hal.science/hal-04632890v1)
+For a complete discussion on the model see for example :cite:t:`metivier2024bilan` (https://hal.science/hal-04632890v1). 
+For a discussion on atolls and the applicability of the Poisson equation to small islands see also :cite:t:`consani2025`. 
 
 References
 ----------
@@ -152,7 +153,7 @@ Contributors
 ============
 
 
-* François Métivier, Professor of Geophysics, IPGP & U. Paris Cité, metivier[@]ipgp.fr
+* François Métivier, Professor of Geophysics, IPGP & U. Paris Cité, metivier[@]ipgp.
 * Carla Consani-Carré, Bachelor of Arts and Sciences, Institut d'études politiques de Paris & IPGP 
 
 Support
