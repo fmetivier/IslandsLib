@@ -65,7 +65,7 @@ inhabitants. However, little is still known about this resource which is vulnera
 
 .. figure:: ./figures/rangiroaloc.png
 
-    GoogleEarth image of the Tuamotu and Rangiroa archipelago
+    GoogleEarth image of the Tuamotu and Rangiroa archipelago :cite:p:`consani2025`
 
 
 Freshwater Lens: a Fragile and Threatened Resource

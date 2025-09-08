@@ -42,6 +42,7 @@ Install IslandsLib
 ==================
 
 Once FreeFem++ and pyFreeFem are installed you can download IslandsLib from github 
+
 .. code:: bash
 
     git clone https://github.com/fmetivier/IslandsLib.git
@@ -54,21 +55,12 @@ open a terminal in the main directory and type
     pip install .
   
 Again depending on your environment you may need admin priviledges.
-If everything goes swiftly, pip will install, if needed, the following dependancies:
-
-* triangle,
-* numpy,
-* scipy,
-* matplotlib,
-* cartopy,
-* shapely,
-* gdal,
-* geopandas,
-* pandas
+If everything goes swiftly, pip will install, if needed, the following dependancies: triangle, numpy, scipy, matplotlib, cartopy, shapely, geopandas, pandas
 
 
 Tested
 ======
 
+At present IslandsLib works on Linux and MacOS Systems. Because of issues with one of the libraries of pyFreeFem it does not work on Windows machines.
+
 * Debian 12 
-* Mac OS catalina 10.15 on imac with i5 processors. FreeFemm++ and pyFreeFem ok. IslandsLib failed because gdal library could not be installed easily.
