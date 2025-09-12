@@ -1,7 +1,10 @@
 Installation
 ************
 
-To work with IslandsLib you need first to install FreeFem++ *then* pyFreeFem and *eventually* IslandsLib
+.. note::
+    At present IslandsLib works on Linux and MacOS systems. 
+
+To work with IslandsLib you need first to install :code:`FreeFem++` *then* :code:`pyFreeFem` and *eventually* :code:`IslandsLib`
 
 Install FreeFem++
 =================
@@ -61,6 +64,7 @@ If everything goes swiftly, pip will install, if needed, the following dependanc
 Tested
 ======
 
-At present IslandsLib works on Linux and MacOS Systems. Because of issues with one of the libraries of pyFreeFem it does not work on Windows machines.
+   * Debian 12
+   * Debian 13
+   * MacOS Sequoia 15.6.1
 
-* Debian 12 

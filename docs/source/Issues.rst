@@ -8,8 +8,9 @@ Issues
 * Contours must **all** be either clockwise or anticlockwise not a mix
 * When drawing standard plots the streamlines can be a bit *moche*  :)
 * Install
-   * Mac OS catalina 10.15 on imac with i5 processors. FreeFemm++ and pyFreeFem ok. IslandsLib failed because gdal library could not be installed easily.
-   * Windows 11, dell optiplex. Installation ok but pyFreeFem crashes because of :code:`tempfile` library issues
+   * Windows 11, dell optiplex. Installation runs ok but pyFreeFem crashes because of :code:`tempfile` library issues
+   * Mac OS catalina 10.15 on imac with i5 processors. :code:`FreeFem++` and :code:`pyFreeFem` ok. :code:`IslandsLib` installation failed because pyproj library could not be installed easily.
+   
 
 Todo
 ----
