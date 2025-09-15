@@ -1,5 +1,5 @@
 #Polynésie
-#Rangiroa
+#Rangiroa: motu Avatoru 
 #UTM zone 6S
 #Source IGN
 #clockwise426560.269960,8347417.220006

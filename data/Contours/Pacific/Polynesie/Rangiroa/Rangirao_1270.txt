@@ -1,5 +1,5 @@
 #Polynésie
-#Rangiroa
+#Rangiroa: motu Mahuta 
 #UTM zone 6S
 #Source IGN
 #clockwise410765.980001,8350016.780005
