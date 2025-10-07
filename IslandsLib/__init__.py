@@ -236,21 +236,23 @@ def IslandBalance(islands = "Désirade", Z = None , dx = 10, dy = 10, R = 0.0025
         
     """
 
+    h = np.mean(Z[Z>0])
+
     #Volume of water stored in the lens
     V = np.sum(np.nan_to_num(Z)) * por * dx * dy * 41
-
+    
     # Area of the lens 
-    S = len(Z[Z>0])*100
+    S = len(Z[Z>0]) * dx * dy
 
     # yearly Volume of  recharge 
-    Rech = S*R*365.25
+    Rech = S * R * 365.25
     
     print("Volume", V, "Surface", S, "Recharge", Rech)
 
     oname = "output_%s.csv" % (islands)
     f = open(oname,"w")
-    f.write("Island,R (m/d),K (m/d),por,Volume (m^3),Surface (m^2),Recharge (m^3/yr)\n")
-    f.write("%s,%.2e,%.2e,%.2e,%.2e,%.2e,%.2e\n" % (islands,R,K,por,V,S,Rech))
+    f.write("Island,R (m/d),K (m/d),por, $h_{moy}$ (m), Volume (m$^3$),Surface (m$^2$),Recharge (m$^3$/yr)\n")
+    f.write("%s,%.2e,%.2e,%.2e,%.2e,%.2e,%.2e,%.2e\n" % (islands,R,K,por,h,V,S,Rech))
     f.close()
 
     return V,S,Rech
