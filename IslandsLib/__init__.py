@@ -60,7 +60,7 @@ from IslandsLib.Misc import *
 
 
 
-def IslandLens(islands = 'Desirade', fname = "../data/Contours/Desirade.txt", ttype = "pq33",  fi = 1e-4 , sub_sampling = 10, clockwise=True, lakes = [], plot = True):
+def IslandLens(islands = 'Desirade', fname = "../data/Contours/Atlantic/Guadeloupe/Desirade.txt", ttype = "pq33a1000",  fi = 1e-4 , sub_sampling = 20, clockwise=True, lakes = [], plot = True):
     """Poisson Resolution for an Island (closed contour with null potential)
 
 
@@ -259,5 +259,7 @@ def IslandBalance(islands = "Désirade", Z = None , dx = 10, dy = 10, R = 0.0025
 
 if __name__ == '__main__':
 
-    IslandLens()
+    u, Th, X, Y, Zm, dx, dy, itp = IslandLens()
+    IslandBalance(islands = "Désirade", Z = Zm)
+
     plt.show()
