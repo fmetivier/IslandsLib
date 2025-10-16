@@ -924,7 +924,7 @@ def create_grid_from_u(Th, u, dupuit = True, fval = 0, dxy = 10):
     """Create gridded values for the water table height Z from the
     reconstructed  values u at each node of the mesh 
 
-    if dupuit :  :math:`Z = \sqrt{u}`
+    
 
 
     Parameters
@@ -949,6 +949,11 @@ def create_grid_from_u(Th, u, dupuit = True, fval = 0, dxy = 10):
     object: 
         itp regular grid interpolator for Z
 
+
+    Note
+    ----
+    If dupuit :  :math:`Z = \sqrt{u}`
+    
     """
     #bordures de la zone de calcul
     xmin = min(Th.x)

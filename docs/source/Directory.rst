@@ -26,4 +26,5 @@ List of files
    * French Polynesia
       * Rangiroa 
          * Motus id (IGN): 782,1270,1384,1570,552,270,453,464,715,44,1043,667,34,1607, 1382, 152, 864 (Avatoru)
+      * Makatea
     

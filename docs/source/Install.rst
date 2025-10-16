@@ -2,7 +2,8 @@ Installation
 ************
 
 .. note::
-    At present IslandsLib works on Linux and MacOS systems. 
+    
+    At present IslandsLib has been tested and works on Linux and MacOS systems. It is available at https://github.com/fmetivier/IslandsLib.
 
 To work with IslandsLib you need first to install :code:`FreeFem++` *then* :code:`pyFreeFem` and *eventually* :code:`IslandsLib`
 
@@ -38,7 +39,7 @@ You must then open a terminal window in the main directory and enter
 
     pip install .
 
-Depending on your system and the way you work you may need administrator priviledges
+Depending on your system and the way you work you may need administrator privileges
 
 
 Install IslandsLib
@@ -57,7 +58,7 @@ open a terminal in the main directory and type
 
     pip install .
   
-Again depending on your environment you may need admin priviledges.
+Again depending on your environment you may need admin privileges.
 If everything goes swiftly, pip will install, if needed, the following dependancies: triangle, numpy, scipy, matplotlib, cartopy, shapely, geopandas, pandas
 
 

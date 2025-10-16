@@ -30,7 +30,7 @@ There are tw four steps
     fname = "../data/Examples/MysteryIsland.txt"
 
 * Second, we set the sub sampling rate of the contour. Often the contours are far too precise for FEM computation at the scale of an entire island. 
-by default the sub sampling rate is 10 but in the case of Desirade a sampling rate of 50 is used. 
+by default the sub sampling rate is 10 but in the case of Desiradeour Mystery island we will use a sampling rate of 2 for example. 
 
 .. code:: python
 
@@ -44,7 +44,7 @@ by default the sub sampling rate is 10 but in the case of Desirade a sampling ra
     This most often comes from the fact that nodes are too close to one another.
 
 
-* Third, we define the parameters of the Triangulation
+* Third, we define the parameters of the triangulation
 
 .. code:: python
 
