@@ -938,7 +938,7 @@ def create_grid_from_u(Th, u, dupuit = True, fval = 0, dxy = 10):
     fval : int, optional
          fill value for gridding, by default 0
     dxy : int, optional
-        grid step in meters, by default 10
+        grid step in meters, by default 10 OR defined by 1000x1000 matrix
 
     Returns
     -------
@@ -961,8 +961,11 @@ def create_grid_from_u(Th, u, dupuit = True, fval = 0, dxy = 10):
     ymin = min(Th.y)
     ymax = max(Th.y)
 
+    if (xmax-xmin)/dxy > 1000 or (ymax-ymin)/dxy >1000:
+        dxy = max(int((xmax-xmin)/1000), int((ymax-ymin)/1000))
     x = np.arange(xmin, xmax, step = dxy)
     y = np.arange(ymin, ymax, step = dxy)
+
 
     dx = np.diff(x)[0] # still keep it to check and return
     dy = np.diff(y)[0]
