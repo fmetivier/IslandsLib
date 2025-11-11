@@ -19,6 +19,7 @@ Summary table
     - R (:math:`m/d`)
     - K (:math:`m/d`)
     - por
+    - :math:`h_{moy}\ (m. asl)`
     - Volume (:math:`m^3`)
     - Surface (:math:`m^2`)
     - Recharge (:math:`m^3/yr`)
@@ -26,9 +27,10 @@ Summary table
 
   * - Avatoru
     - 0.000828
-    - 14.6
+    - 8
     - 0.25
-    - 1.38e6 
+    - 0.15
+    - 1.33e6 
     - 8.73e5
     - 2.64e5
 
@@ -37,6 +39,7 @@ Summary table
     - 0.000548
     - 3.456000
     - 0.30
+    - 
     - 15.11e6
     - 10.48e6
     - 2.97e6
@@ -59,7 +62,7 @@ Parameters
     R = 0.000827698# m/j
     por=0.25
     motu = 864
-    K= 14.6
+    K= 8
     por=0.25
     fi = 2*R*25/K/1025
 
