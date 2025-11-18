@@ -39,7 +39,7 @@ ttype = 'pq33a10000'
 # Infiltration
 R = 1. / (365.25) * (1-0.8) #m/d 
 #Conductivity
-K = 4e-5*86400 # m/d
+K = 7e-5*86400 # m/d
 # Porosity
 por = 0.3
 
@@ -51,5 +51,8 @@ fi = 2 * R * 25 / K / 1025
 #####################
 
 u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = island_fname, lakes = lakes, ttype = ttype,  fi = fi , sub_sampling = sub_sampling, clockwise = clockwise, plot = True)
+
+cs = plt.contour(X,Y,Zm, levels=20)
+il.dump_geojson(cs,'Mayotte_PT','EPSG:4471')
 
 il.IslandBalance("Petite Terre", Zm, dx, dy, R, K, por)
