@@ -1,7 +1,7 @@
 #Loyaute
 #Lifou 328631
-#WGS 1984 EPSG:3857 OpenStreetMap 
-#Source IGN
+#WGS 1984 EPSG:3857 
+#Source OpenStreetMap 
 #clockwise
 18620229.685165,-2405719.315503
 18620260.732171,-2405535.389546

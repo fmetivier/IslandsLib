@@ -1,7 +1,7 @@
 #Loyaute
 #Tiga 77062
-#WGS 1984 EPSG:3857 OpenStreetMap 
-#Source IGN
+#WGS 1984 EPSG:3857
+#Source  OpenStreetMap 
 #clockwise
 18680207.691721,-2401969.276533
 18680233.940857,-2401968.369799

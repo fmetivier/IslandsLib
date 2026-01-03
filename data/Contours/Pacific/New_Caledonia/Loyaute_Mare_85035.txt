@@ -1,7 +1,7 @@
 #Loyaute
 #Mare 85035
-#WGS 1984 EPSG:3857 OpenStreetMap 
-#Source IGN
+#WGS 1984 EPSG:3857
+#Source  OpenStreetMap 
 #clockwise
 18714390.545495,-2443995.223555
 18714391.513975,-2443989.782098

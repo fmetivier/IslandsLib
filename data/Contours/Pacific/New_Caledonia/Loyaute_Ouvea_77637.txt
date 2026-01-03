@@ -1,6 +1,6 @@
 #Loyaute
 #Ouvea 77637
-#WGS 1984 EPSG:3857 OpenStreetMap 
+#WGS 1984 EPSG:3857
 #Source OpenStreetMap
 #clockwise
 18539896.308593,-2322465.056234
