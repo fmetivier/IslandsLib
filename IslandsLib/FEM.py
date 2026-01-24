@@ -786,7 +786,8 @@ def solve_fem(Th, bcs=None, fi=1e-4):
     # Boundary conditions
     #####################################################
 
-    f = np.array([fi]*len(Th.x))
+    if type(fi) in [float,int]:
+       f = np.array([fi]*len(Th.x))
 
     # BC boundary
     bc_vals = {}
