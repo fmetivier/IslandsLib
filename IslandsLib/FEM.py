@@ -786,6 +786,8 @@ def solve_fem(Th, bcs=None, fi=1e-4):
     # Boundary conditions
     #####################################################
 
+    # check whether the poisson coefficient fi is a number
+    # if yes applies it to all nodes
     if type(fi) in [float,int]:
        f = np.array([fi]*len(Th.x))
 
