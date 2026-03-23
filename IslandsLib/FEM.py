@@ -738,7 +738,7 @@ def solve_fem(Th, bcs=None, fi=1e-4):
     Th: Th object, 
     bcs: dic, 
         boundary conditions dictionary,
-    fi: float, optional, 
+    fi: array, optional, 
         right-hand side of the Poisson equation :math:`(\Delta\\rho/\\rho) (P/K)`,
 
     Returns
@@ -786,10 +786,6 @@ def solve_fem(Th, bcs=None, fi=1e-4):
     # Boundary conditions
     #####################################################
 
-    # check whether the poisson coefficient fi is a number
-    # if yes applies it to all nodes
-    if type(fi) in [float,int]:
-       f = np.array([fi]*len(Th.x))
 
     # BC boundary
     bc_vals = {}
@@ -814,12 +810,17 @@ def solve_fem(Th, bcs=None, fi=1e-4):
     #####################################################
     # Solve PDE
     #####################################################
+    # check if fi is not an array create it
+    # print(type(fi))
+    if type(fi) in (float, int):
+        fi = fi*np.ones(len(Th.x))
 
+    
     epsilon = 1e-4
     e = 1./epsilon
 
     M = - S
-    Source = G*f
+    Source = G*fi
     
     
     for key, val in db.items():
