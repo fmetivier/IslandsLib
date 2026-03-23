@@ -6,8 +6,8 @@
 #############################################
 
 # Libraries
-import sys 
-sys.path.append("./..")
+# import sys 
+# sys.path.append("./..")
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -62,6 +62,7 @@ x = np.linspace(min(xi), max(xi),100)
 y = np.linspace(min(yi), max(yi),100)
 
 X,Y = np.meshgrid(x,y, indexing='ij')
+
 Z = X*0 + 1
 
 nx,ny = np.shape(Z)
@@ -84,7 +85,7 @@ u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = fname,\
 
 
 ###############################################################
-# look at what our precipitation pattern looks loke on the mesh
+# Look at what our precipitation pattern looks loke on the mesh
 ###############################################################
 
 fig, ax = plt.subplots(1)
