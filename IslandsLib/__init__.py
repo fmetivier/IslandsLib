@@ -72,7 +72,7 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Atlantic/Guadelou
             Coastline contour data file. Defaults to "../../data/Desirade.txt".
         ttype: str, optional 
             Triangle triangulation parameters. Defaults to "pq33a1000".
-        fi: float, optional
+        fi: interpolator or float, optional
             value of the Poisson coefficient (dimensionless). Defaults to 1e-4
         sub_sampling: int, optional
             sampling of the contour (1 = all points are preserved, 10 = one point every 10 points is conserved)
@@ -182,7 +182,21 @@ def IslandLens(islands = 'Desirade', fname = "../data/Contours/Atlantic/Guadelou
     for key, val in bcs.items():
         print(key, val)
 
-    u, Th = solve_fem( Th = Th, bcs = bcs, fi = fi) 
+    # check whether the poisson coefficient fi is a number
+    # if yes applies it to all nodes
+    # else applies source term to each node
+    if type(fi) in [float,int]:
+        f = np.array([fi]*len(Th.x))
+    else: # interpolator 
+        f = np.zeros(len(Th.x))
+        for i in range(len(f)):
+            try:
+                f[i] = fi((Th.x[i], Th.y[i]))
+            except:
+                print(Th.x[i], Th.y[i])
+        
+
+    u, Th = solve_fem( Th = Th, bcs = bcs, fi = f) 
 
     #####################################
     # Plot the potential and streamlines

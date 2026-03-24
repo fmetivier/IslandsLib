@@ -1,6 +1,10 @@
 Tutorial
 ********
 
+.. Note::
+
+    All sample scripts are available in the example directory of the library. 
+
 
 Simple Lens 
 ===========
@@ -134,11 +138,7 @@ Comments
 * Note that in the case of Mystery island we used realistic values for conductivity taken from the Marie Galante island in Guadeloupe.
 * For a first try you can set `ttype` to `pq33` before adding an areal constraint. If your area is too small the number of triangles will be to high and the mesh generation will fail
 
-The full script is given below
 
-.. literalinclude:: ../../examples/SimpleLens.py
-    :language: python 
-    :linenos:
 
 Island with a lake 
 ==================
@@ -217,5 +217,82 @@ If you compare to the same island without lake it is clear that lakes can be of 
 boundary conditions that constrain the solution.
 
 .. figure:: ./figures/MysteryLake.svg
+
+
+Island with varying precipitation
+=================================
+
+Precipitation can vary through space. To include varying precipitation these must be passed to the :func:`IslandLens` function as 
+a scipy :func:`RegularGridInterpolator` object
+The follwing shows a simple example on how to do this for Mystery island.
+
+We start by opening the island contour file and read it
+
+.. code:: python
+
+    f = open(fname,"r")
+
+    lines = f.readlines()
+    xi, yi = [], []
+    for line in lines:
+        if line[0] != "#": # skip header
+            l = line.strip('\n').split(',')
+            xi.append( float(l[0]) )
+            yi.append( float(l[1]) )
+
+we then create the smallest grid that includes the island 
+
+.. code:: python
+
+    x = np.linspace(min(xi), max(xi),100)
+    y = np.linspace(min(yi), max(yi),100)
+
+    X,Y = np.meshgrid(x,y, indexing='ij')
+
+
+We then fill the mesh with a simple distribution of poisson coefficient ratios where the ratio is split 
+between the northern and southern part of the island 
+and create the interpolator. The value of poisson coefficient to the north of the island is twice that of the south.
+
+.. code:: python
+
+    R  = 0.19 # m/year
+    R = R / 365.25 # infiltration m/d
+    # Conductivity
+    K = 2.5e-5*86400 # conductivity m/d
+
+    fi = 2 * R * 25 / K / 1025
+
+    Z = X*0 + 1
+
+    nx,ny = np.shape(Z)
+    for i in range(nx):
+        for j in range(ny):
+            if Y[i,j] > 0: Z[i,j] = fi
+            else: Z[i,j] = 0.5*fi
+
+    ri = RegularGridInterpolator((x,y),Z) # interpolator to be passed to IslandLens
+
+The interpolator is then passed as an argument to :func:`IslandLens`
+
+.. code:: python
+
+    u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = fname,\
+     ttype = ttype, fi = ri, sub_sampling = sub_sampling , clockwise = clockwise,\
+     lakes= [], plot=True)
+
+The interpolator is then used by Islandslib to interpolate values of fi on each node of the freefem mesh 
+and modify the source term in the solution.  
+
+.. figure:: ./figures/Mystery_rain.svg 
+
+    Rainfall distribution
+
+The resulting equipotential map shows the influence of this variable precipitation rates. 
+The map is asymetrical whith the highest head sligthly to the north of the island.
+
+.. figure:: ./figures/Mystery_island_VR.svg 
+
+    Mystery Island with variable rainfall
 
 

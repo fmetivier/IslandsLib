@@ -1,4 +1,10 @@
 
+#############################################
+#
+# Mystery Island with constant precipitations
+#
+############################################## 
+
 # Libraries
 # import sys 
 # sys.path.append("./..")
