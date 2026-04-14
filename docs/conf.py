@@ -40,5 +40,5 @@ html_sidebars = {
   "**": []
 }
 
-html_logo = "figures/logo.svg"
+html_logo = "source/figures/logo.svg"
 
