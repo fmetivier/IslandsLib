@@ -13,4 +13,4 @@ The source term (Precipitation or withdrawal) can be constant or vary in space
 
 IslandsLib also provides a data repository of Island contours. **Contributions welcome** !
 
-For more information (installation procedure, sample scripts, motivations) please see the documentation  https://morpho.ipgp.fr/islandslib/
+For more information (installation procedure, sample scripts, motivations) please see the documentation on readthedocs : https://islandslib.readthedocs.io/en/latest/index.html
