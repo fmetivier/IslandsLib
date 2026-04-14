@@ -1,1 +1,1 @@
-sphixcontrib-bibtex=2.6.5
+sphixcontrib-bibtex==2.6.5
