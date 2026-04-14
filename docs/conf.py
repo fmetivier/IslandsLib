@@ -11,9 +11,9 @@ copyright = '2025, François Métivier'
 author = 'François Métivier'
 release = '1'
 
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join("..","..")))
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath(os.path.join("..","..")))
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -40,5 +40,5 @@ html_sidebars = {
   "**": []
 }
 
-html_logo = "source/figures/logo.svg"
+html_logo = "figures/logo.svg"
 
