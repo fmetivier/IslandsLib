@@ -33,7 +33,8 @@ autodoc_mock_imports = [
     "MySQLdb",
     "sqlite3",
     "copy",
-    "pyFreeFem"
+    "pyFreeFem",
+    "geopandas"
 ]
 
 bibtex_default_style = 'unsrt'
