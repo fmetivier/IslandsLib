@@ -21,6 +21,21 @@ sys.path.insert(0, os.path.abspath('./..'))
 
 extensions = ['sphinx.ext.autodoc','sphinx.ext.coverage','sphinx.ext.napoleon','sphinxcontrib.bibtex']
 
+autodoc_mock_imports = [
+    "matplotlib",
+    "sqlalchemy",
+    "numpy",
+    "scipy",
+    "json",
+    "mpl_toolkits",
+    "datetime",
+    "dateutil",
+    "MySQLdb",
+    "sqlite3",
+    "copy",
+    "pyFreeFem"
+]
+
 bibtex_default_style = 'unsrt'
 bibtex_reference_style = 'author_year' 
 bibtex_bibfiles = ['references.bib']
