@@ -13,8 +13,8 @@ release = '1'
 
 
 import sys
-from pathlib import Path
-sys.path.insert(0, str(Path('.','..').resolve()))
+import os
+sys.path.insert(0, os.path.abspath('./..'))
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
