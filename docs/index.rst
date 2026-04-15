@@ -12,9 +12,9 @@ Welcome to IslandsLib's documentation
    Install  
    Samples
    Directory
-   Lib
    RealIslands
    ContoursIGN
+   Lib
    Issues
    
 
