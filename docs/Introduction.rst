@@ -98,7 +98,7 @@ their potential changes.
 
 .. _fig-atoll:
 
-.. figure:: ./figures/Motu.svg
+.. figure:: ./figures/Motu_Simple.svg
     :width: 600
 
     Idealised cross section of a Motu. Simplified from :cite:p:`werner2017hydrogeology`
