@@ -41,7 +41,8 @@ autodoc_mock_imports = [
     "shapely",
     "triangle",
     "sys",
-    "geojson"
+    "geojson",
+    "pyproj"
 ]
 
 bibtex_default_style = 'unsrt'
