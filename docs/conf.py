@@ -40,7 +40,8 @@ autodoc_mock_imports = [
     "glob",
     "shapely",
     "triangle",
-    "sys"
+    "sys",
+    "geojson"
 ]
 
 bibtex_default_style = 'unsrt'
