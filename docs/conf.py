@@ -34,7 +34,13 @@ autodoc_mock_imports = [
     "sqlite3",
     "copy",
     "pyFreeFem",
-    "geopandas"
+    "geopandas",
+    "pandas",
+    "cartopy",
+    "glob",
+    "shapely",
+    "triangle",
+    "sys"
 ]
 
 bibtex_default_style = 'unsrt'
