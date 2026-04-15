@@ -4,7 +4,7 @@ Library
 Custom Classes
 ==============
 
-.. automodule:: IslandsLib.Classes
+.. automodule:: Classes
    :members:
    
 
