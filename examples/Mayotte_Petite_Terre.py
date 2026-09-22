@@ -9,6 +9,7 @@
 # sys.path.append("./..")
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 import IslandsLib as il
 
@@ -46,13 +47,20 @@ K = 7e-5*86400 # m/d
 por = 0.3
 
 
-fi = 2 * R * 25 / K / 1025
+Ntrials=21
+for i in range(Ntrials-1):
+    r = R/Ntrials * (i+1)
 
-#####################
-# Solve the problem
-#####################
+    fi = 2 * r * 25 / K / 1025
 
-u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = island_fname, lakes = lakes, ttype = ttype,  fi = fi , sub_sampling = sub_sampling, clockwise = clockwise, plot = True)
+    #####################
+    # Solve the problem
+    #####################
+
+    u, Th, X, Y, Zm, dx, dy, itp = il.IslandLens( islands = islands, fname = island_fname, lakes = lakes, ttype = ttype,  fi = fi , sub_sampling = sub_sampling, clockwise = clockwise, plot = True)
+    np.save('../../pt_X',X)
+    np.save('../../pt_Y',Y)
+    np.save('../../pt_Zm_%s' % (i+1),Zm)
 
 cs = plt.contour(X,Y,Zm, levels=20)
 # dump geojson of contours
@@ -72,3 +80,4 @@ plt.ylabel('Y (m)')
 plt.axis('equal')
 plt.legend()
 plt.savefig('M_contour.pdf',bbox_inches='tight')
+

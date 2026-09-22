@@ -154,7 +154,7 @@ Contributors
 
 
 * François Métivier, Professor of Geophysics, IPGP & U. Paris Cité, metivier[@]ipgp.
-* Carla Consani-Carré, Bachelor of Arts and Sciences, Institut d'études politiques de Paris & IPGP 
+* Carla Consani-Carré, ENS Paris
 * Thomas Gauthier-Brouard, ENS Paris. 
 
 Support
